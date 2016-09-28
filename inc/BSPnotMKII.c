@@ -1359,7 +1359,7 @@ void static commonInit(const uint8_t *cmdList) {
 // Output 8-bit to serial port
 // Input: letter is an 8-bit ASCII character to be transferred
 // Output: none
-void UART_OutChar(char data){
+void BSP_UART0_OutChar(char data){
   while((UART0_FR_R&UART_FR_TXFF) != 0);
   UART0_DR_R = data;
 }
@@ -1368,9 +1368,9 @@ void UART_OutChar(char data){
 // Output String (NULL termination)
 // Input: pointer to a NULL-terminated string to be transferred
 // Output: none
-void UART_OutString(char *pt){
+void BSP_UART0_OutString(char *pt){
   while(*pt){
-    UART_OutChar(*pt);
+    BSP_UART0_OutChar(*pt);
     pt++;
   }
 }
@@ -1423,7 +1423,7 @@ void static ST7735_InitR(enum initRFlags option) {
 // Output: none
 void BSP_LCD_Init(void){
   ST7735_InitR(INITR_GREENTAB);
-  UART0_OutString("/n/r**Simulated BSP hardware**/n/r");
+  BSP_UART0_OutString("/n/r**Simulated BSP hardware**/n/r");
 
 }
 
