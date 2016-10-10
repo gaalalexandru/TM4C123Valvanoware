@@ -1,0 +1,33 @@
+Dependencies for Project 'Lab2', Target 'Target': (DO NOT MODIFY !)
+F (.\Lab2.c)(0x57FBE9E7)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\lab2.o --omf_browse .\objects\lab2.crf --depend .\objects\lab2.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EAEA6)
+I (../inc/BSP.h)(0x57BA0A84)
+I (../inc/Profile.h)(0x57584214)
+I (Texas.h)(0x56D8813C)
+I (../inc/CortexM.h)(0x56B70116)
+I (os.h)(0x57C73BC2)
+F (.\osasm.s)(0x57FBE60E)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\listings\osasm.lst --xref -o .\objects\osasm.o --depend .\objects\osasm.d)
+F (.\os.c)(0x57FBE60E)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\os.o --omf_browse .\objects\os.crf --depend .\objects\os.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EAEA6)
+I (os.h)(0x57C73BC2)
+I (../inc/CortexM.h)(0x56B70116)
+I (../inc/BSP.h)(0x57BA0A84)
+F (..\inc\BSP.c)(0x57BA0A84)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\bsp.o --omf_browse .\objects\bsp.crf --depend .\objects\bsp.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EAEA6)
+I (..\inc\BSP.h)(0x57BA0A84)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x53887C8A)
+F (..\inc\Profile.c)(0x575843A6)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\profile.o --omf_browse .\objects\profile.crf --depend .\objects\profile.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EAEA6)
+I (..\inc\../inc/tm4c123gh6pm.h)(0x53887C8A)
+F (.\texas.o)(0x57C74826)()
+F (RTE\Device\TM4C123GH6PM\startup_TM4C123.s)(0x56BB9E56)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_tm4c123.lst --xref -o .\objects\startup_tm4c123.o --depend .\objects\startup_tm4c123.d)
+F (RTE\Device\TM4C123GH6PM\system_TM4C123.c)(0x5253C844)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-ID:\Keil_v5\TM4C123Valvanoware\Lab2_4C123\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\system_tm4c123.o --omf_browse .\objects\system_tm4c123.crf --depend .\objects\system_tm4c123.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EAEA6)
+I (D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123.h)(0x530F0F16)
+I (D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h)(0x550FFE4C)
+I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cm4.h)(0x5736061E)
+I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cminstr.h)(0x57359F26)
+I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\cmsis_armcc.h)(0x57359F26)
+I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmfunc.h)(0x57359F26)
+I (D:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include\core_cmsimd.h)(0x57359F26)
+I (D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B70026)
