@@ -33,10 +33,10 @@ void OS_Init(void){
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
   // initialize any global variables as needed
-  //***YOU IMPLEMENT THIS FUNCTION*****
 }
 
 void SetInitialStack(int i){
+
 	//first set for each stack the stack pointer
 	tcbs[i].sp = &Stacks[i][STACKSIZE-16];	//Thread Stack Pointer	R13 = SP
 	//fill in bottom positions of the stack with register values, as if thread was already running and interrupted
@@ -66,7 +66,7 @@ void SetInitialStack(int i){
 int OS_AddThreads(void(*thread0)(void),
                   void(*thread1)(void),
                   void(*thread2)(void),
-                  void(*thread3)(void)){
+                  void(*thread3)(void)){				  
 	int32_t sr;	//I bit status
 	sr = StartCritical();	//Disable Interrupts
 	
@@ -165,6 +165,7 @@ void OS_Launch(uint32_t theTimeSlice){
 }
 // runs every ms in this project
 void Scheduler(void){ // every time slice
+// ROUND ROBIN
 	static int32_t Counter = 0;
 	Counter = (Counter + 1)%(PerThread0_Period * PerThread1_Period);
 	

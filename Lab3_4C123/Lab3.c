@@ -566,8 +566,8 @@ int main_step2(void){
   OS_InitSemaphore(&sCD, 0);
   OS_InitSemaphore(&sEF, 0);
   OS_AddThreads(&TaskA, &TaskB, &TaskC, &TaskD, &TaskE, &TaskF);
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 3 grader
-  TExaS_Init(GRADESTEP2, 1000);    // initialize the Lab 3 grader
+	TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 3 grader
+  //TExaS_Init(GRADESTEP2, 1000);    // initialize the Lab 3 grader
   OS_Launch(BSP_Clock_GetFreq()/1000);
   return 0;             // this never executes
 }
@@ -757,7 +757,7 @@ void TaskR(void){ // dummy
   }
 }
 
-int main_step4(void){
+int main(void){
   OS_Init();
   Profile_Init();  // initialize the 7 hardware profiling pins
   OS_FIFO_Init();
@@ -887,7 +887,7 @@ int main_step5(void){
 /* ****************************************** */
 /*          End of Step 5 Section             */
 /* ****************************************** */
-const unsigned short title2[] = {
+//const unsigned short title2[] = {
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
@@ -1191,7 +1191,6 @@ const unsigned short title2[] = {
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
-
 //};
 //---------------- Step 6 ----------------
 // Step 6 is to implement the fitness device by combining the
@@ -1211,8 +1210,8 @@ const unsigned short title2[] = {
 // Remember that you must have exactly one main() function, so
 // to work on this step, you must rename all other main()
 // functions in this file.
-int main(void){
-  OS_Init();
+/*int main_real(void){
+	OS_Init();
   Profile_Init();  // initialize the 7 hardware profiling pins
   Task0_Init();    // microphone init
   Task1_Init();    // accelerometer init
@@ -1244,7 +1243,7 @@ int main(void){
 //  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 3 logic analyzer
   OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
   return 0;             // this never executes
-}
+}*/
 /* ****************************************** */
 /*          End of Step 6 Section             */
 /* ****************************************** */
