@@ -11,7 +11,10 @@
 
 // function definitions in osasm.s
 void StartOS(void);
+
+// function definitions in os.c
 void static runperiodicevents(void);
+void static runsleep(void);
 
 #define NUMTHREADS  6        // maximum number of threads
 #define NUMPERIODIC 2        // maximum number of periodic threads
@@ -19,17 +22,21 @@ void static runperiodicevents(void);
 struct tcb{
   int32_t *sp;      // pointer to stack (valid for threads not running
   struct tcb *next; // linked-list pointer
-	int32_t *blocked;	// pointer to blocked semaphore
-	int32_t sleep;		// time to sleep
-   // nonzero if blocked on this semaphore
-   // nonzero if this thread is sleeping
-//*FILL THIS IN****
+	int32_t *blocked;	// pointer to blocked semaphore, nonzero if blocked on this semaphore
+	int32_t sleep;		// time to sleep, nonzero if this thread is sleeping
 };
 typedef struct tcb tcbType;
 tcbType tcbs[NUMTHREADS];
 tcbType *RunPt;
 int32_t Stacks[NUMTHREADS][STACKSIZE];
 
+struct ptcb{
+	void (*task)(void);
+	uint32_t period;
+	uint32_t counter;
+};
+typedef struct ptcb ptcbType;
+ptcbType PerTask[NUMPERIODIC];
 
 // ******** OS_Init ************
 // Initialize operating system, disable interrupts
@@ -40,7 +47,9 @@ int32_t Stacks[NUMTHREADS][STACKSIZE];
 void OS_Init(void){
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
-	OS_AddPeriodicEventThread(&runperiodicevents,1000);	
+	//OS_AddPeriodicEventThread(&runperiodicevents,1);	//every 1 ms
+	BSP_PeriodicTask_Init(runperiodicevents,1000,2);	//Start one HW Timer with periodic interrupt at 1000 Hz
+	BSP_PeriodicTask_InitB(runsleep,1000,3);	//Start one HW Timer with periodic interrupt at 1000 Hz
   // perform any initializations needed
 }
 
@@ -128,15 +137,30 @@ int OS_AddThreads(void(*thread0)(void), // **similar to Lab 2. initialize as not
 // These threads can call OS_Signal
 // In Lab 3 this will be called exactly twice
 int OS_AddPeriodicEventThread(void(*thread)(void), uint32_t period){
-	BSP_PeriodicTask_Init(thread,period,3);
+	int32_t static event_number = 0;
+	//int32_t frequency;
+	//frequency = 1000/period;	//in this case 1000 / 1ms = 1000 Hz
+	PerTask[event_number].task = thread;
+	PerTask[event_number].period = period;
+	PerTask[event_number].counter = 1;
+	event_number++;
   return 1;
 }
 
-
-
 void static runperiodicevents(void){
-// ****IMPLEMENT THIS****
-// **RUN PERIODIC THREADS, DECREMENT SLEEP COUNTERS
+// **RUN PERIODIC THREADS
+	int32_t i;
+	for (i=0;i<NUMPERIODIC;i++){	//search for periodic tasks
+		PerTask[i].counter--;
+		if(PerTask[i].counter == 0) { //it's time to launch a periodic task		
+			PerTask[i].task();
+			PerTask[i].counter = PerTask[i].period;	//reset
+		}
+	}
+}
+
+void static runsleep(void){
+// **DECREMENT SLEEP COUNTERS
 	int32_t i;
 	for (i=0;i<NUMTHREADS;i++){ if(tcbs[i].sleep != 0) {	//search for sleeping main threads
 			tcbs[i].sleep --;	//decrement sleep period by 1ms
@@ -226,7 +250,7 @@ void OS_Wait(int32_t *semaPt){
 void OS_Signal(int32_t *semaPt){
 	tcbType	*threadPt;	//local thread pointer
 	DisableInterrupts();
-	*semaPt = (*semaPt) + 1;
+	(*semaPt) = (*semaPt) + 1;
 	if(*semaPt <= 0){
 		threadPt = RunPt->next;	//point to next thread
 		while((threadPt->blocked) != semaPt) {	threadPt = threadPt->next; }//search for a thread that is blocked on this semaphore
@@ -262,7 +286,7 @@ void OS_FIFO_Init(void){ //Init the FIFO with indexes and CurrentSize and LostDa
 int OS_FIFO_Put(uint32_t data){
 	if(CurrentSize == FSIZE) { //FIFO is full
 		LostData++;
-		return -1; //Full
+		return -1; //Error
 	}
 	else {
 		Fifo[PutI] = data;	//store data in FIFO at put index
@@ -270,7 +294,6 @@ int OS_FIFO_Put(uint32_t data){
 		OS_Signal(&CurrentSize);
 		return 0;	//Success
 	}
-  //return 0;   // success
 }
 
 // ******** OS_FIFO_Get ************

@@ -42,6 +42,7 @@
 
 uint32_t sqrt32(uint32_t s);
 #define THREADFREQ 1000   // frequency in Hz of round robin scheduler
+#define BUZZLEVEL	124	//Buzzer PWM duty cycle
 
 //---------------- Global variables shared between tasks ----------------
 uint32_t Time;              // elasped time in 100 ms units
@@ -306,7 +307,7 @@ void Task3(void){
         PlotState = Accelerometer;
       }
       ReDrawAxes = 1;                // redraw axes on next call of display task
-      BSP_Buzzer_Set(512);           // beep until next call of this task
+      BSP_Buzzer_Set(BUZZLEVEL);           // beep until next call of this task
     }
     prev1 = current;
     current = BSP_Button2_Input();
@@ -322,7 +323,7 @@ void Task3(void){
         PlotState = Temperature;
       }
       ReDrawAxes = 1;                // redraw axes on next call of display task
-      BSP_Buzzer_Set(512);           // beep until next call of this task
+      BSP_Buzzer_Set(BUZZLEVEL);           // beep until next call of this task
     }
     prev2 = current;
     // update the LED
@@ -757,7 +758,7 @@ void TaskR(void){ // dummy
   }
 }
 
-int main(void){
+int main_step4(void){
   OS_Init();
   Profile_Init();  // initialize the 7 hardware profiling pins
   OS_FIFO_Init();
@@ -1192,6 +1193,8 @@ int main_step5(void){
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 // 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
 //};
+
+
 //---------------- Step 6 ----------------
 // Step 6 is to implement the fitness device by combining the
 // OS functions that were implemented and tested in the earlier
@@ -1210,7 +1213,7 @@ int main_step5(void){
 // Remember that you must have exactly one main() function, so
 // to work on this step, you must rename all other main()
 // functions in this file.
-/*int main_real(void){
+int main(void){
 	OS_Init();
   Profile_Init();  // initialize the 7 hardware profiling pins
   Task0_Init();    // microphone init
@@ -1243,7 +1246,7 @@ int main_step5(void){
 //  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 3 logic analyzer
   OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
   return 0;             // this never executes
-}*/
+}
 /* ****************************************** */
 /*          End of Step 6 Section             */
 /* ****************************************** */
