@@ -118,8 +118,6 @@ int OS_AddThreads(void(*thread0)(void), // **similar to Lab 2. initialize as not
 	Stacks[4][STACKSIZE-2] = (int32_t)(thread4);	//Set address of thread4 as PC
 	SetInitialStack(5);	//SetInitialStack initial stack of main thread 5
 	Stacks[5][STACKSIZE-2] = (int32_t)(thread5);	//Set address of thread5 as PC	
-  
-
 	
 	EndCritical(sr);	//Enable Interrupts
 	return 1;         // successful
