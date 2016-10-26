@@ -20,7 +20,6 @@
 
 SysTick_Handler                ; 1) Saves R0-R3,R12,LR,PC,PSR
     CPSID   I                  ; 2) Prevent interrupt during switch
-	;AleGaa - start
 	PUSH {R4-R11}		;saves registers R4 to R11
 	LDR R0,=RunPt		;load address of RunPt to R0
 	LDR R1,[R0]		;R1 = RunPt
@@ -33,7 +32,6 @@ SysTick_Handler                ; 1) Saves R0-R3,R12,LR,PC,PSR
 	LDR R1,[R0]		; 6) R1 = RunPt, new thread
 	LDR SP,[R1]		;load new SP, SP = RunPt.sp
 	POP {R4-R11}		;load registers from stack
-	;AleGaa - end
     CPSIE   I                  ; 9) tasks run with interrupts enabled
     BX      LR                 ; 10) restore R0-R3,R12,LR,PC,PSR
 

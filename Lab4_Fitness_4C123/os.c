@@ -43,11 +43,9 @@ void OS_Init(void){
 	BSP_PeriodicTask_Init(runperiodicevents,1000,4);	//Start one HW Timer with periodic interrupt at 1000 Hz
 // perform any initializations needed, 
 // set up periodic timer to run runperiodicevents to implement sleeping
-  
 }
 
 void SetInitialStack(int i){
-// **Same as Lab 2****
 	//first set for each stack the stack pointer
 	tcbs[i].sp = &Stacks[i][STACKSIZE-16];	//Thread Stack Pointer	R13 = SP
 	//fill in bottom positions of the stack with register values, as if thread was already running and interrupted
@@ -324,7 +322,7 @@ void RealTimeEvents(void){int flag=0;
       flag=1;
 		}
     if(flag){
-      OS_Suspend();
+      OS_Suspend(); // run the scheduler
     }
   }
 }
@@ -332,7 +330,7 @@ void RealTimeEvents(void){int flag=0;
 // Initialize periodic timer interrupt to signal 
 // Inputs:  semaphore to signal
 //          period in ms
-// priority level at 0 (highest
+// priority level at 0 (highest)
 // Outputs: none
 void OS_PeriodTrigger0_Init(int32_t *semaPt, uint32_t period){
 	PeriodicSemaphore0 = semaPt;
@@ -343,7 +341,7 @@ void OS_PeriodTrigger0_Init(int32_t *semaPt, uint32_t period){
 // Initialize periodic timer interrupt to signal 
 // Inputs:  semaphore to signal
 //          period in ms
-// priority level at 0 (highest
+// priority level at 0 (highest)
 // Outputs: none
 void OS_PeriodTrigger1_Init(int32_t *semaPt, uint32_t period){
 	PeriodicSemaphore1 = semaPt;
