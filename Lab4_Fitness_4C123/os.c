@@ -14,13 +14,16 @@
 // function definitions in osasm.s
 void StartOS(void);
 
+void static runperiodicevents(void);
 #define NUMTHREADS  8        // maximum number of threads
 #define NUMPERIODIC 2        // maximum number of periodic threads
 #define STACKSIZE   100      // number of 32-bit words in stack per thread
 struct tcb{
-  int32_t *sp;       // pointer to stack (valid for threads not running
-  struct tcb *next;  // linked-list pointer
-//*FILL THIS IN****
+  int32_t *sp;      // pointer to stack (valid for threads not running
+  struct tcb *next; // linked-list pointer
+  int32_t *blocked;	// pointer to blocked semaphore, nonzero if blocked on this semaphore
+  int32_t sleep;	// time to sleep, nonzero if this thread is sleeping
+  uint32_t priority; // priority of the thread, 0 - highest priority, 254 - lowest
 };
 typedef struct tcb tcbType;
 tcbType tcbs[NUMTHREADS];
@@ -37,6 +40,7 @@ void static runperiodicevents(void);
 void OS_Init(void){
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
+	BSP_PeriodicTask_Init(runperiodicevents,1000,4);	//Start one HW Timer with periodic interrupt at 1000 Hz
 // perform any initializations needed, 
 // set up periodic timer to run runperiodicevents to implement sleeping
   
@@ -98,7 +102,34 @@ int OS_AddThreads(void(*thread0)(void), uint32_t p0,
 	
 	// initialize RunPt
 	RunPt = &tcbs[0];
-// **similar to Lab 3. initialize priority field****
+
+	// initialize four stacks, including initial PC
+	SetInitialStack(0);	//SetInitialStack initial stack of main thread 0
+	Stacks[0][STACKSIZE-2] = (int32_t)(thread0);	//Set address of thread0 as PC
+	SetInitialStack(1);	//SetInitialStack initial stack of main thread 1
+	Stacks[1][STACKSIZE-2] = (int32_t)(thread1);	//Set address of thread1 as PC	
+	SetInitialStack(2);	//SetInitialStack initial stack of main thread 2
+	Stacks[2][STACKSIZE-2] = (int32_t)(thread2);	//Set address of thread2 as PC
+	SetInitialStack(3);	//SetInitialStack initial stack of main thread 3
+	Stacks[3][STACKSIZE-2] = (int32_t)(thread3);	//Set address of thread3 as PC
+	SetInitialStack(4);	//SetInitialStack initial stack of main thread 4
+	Stacks[4][STACKSIZE-2] = (int32_t)(thread4);	//Set address of thread4 as PC
+	SetInitialStack(5);	//SetInitialStack initial stack of main thread 5
+	Stacks[5][STACKSIZE-2] = (int32_t)(thread5);	//Set address of thread5 as PC	
+	SetInitialStack(6);	//SetInitialStack initial stack of main thread 6
+	Stacks[6][STACKSIZE-2] = (int32_t)(thread6);	//Set address of thread5 as PC	
+	SetInitialStack(7);	//SetInitialStack initial stack of main thread 6
+	Stacks[7][STACKSIZE-2] = (int32_t)(thread7);	//Set address of thread5 as PC	
+	
+	//initialize priority for each thread
+	tcbs[0].priority = p0;
+	tcbs[1].priority = p1;
+	tcbs[2].priority = p2;
+	tcbs[3].priority = p3;
+	tcbs[4].priority = p4;
+	tcbs[5].priority = p5;
+	tcbs[6].priority = p6;
+	tcbs[7].priority = p7;
 	
 	EndCritical(sr);	//Enable Interrupts
 	return 1;         // successful
@@ -109,7 +140,11 @@ void static runperiodicevents(void){
 // ****IMPLEMENT THIS****
 // **DECREMENT SLEEP COUNTERS
 // In Lab 4, handle periodic events in RealTimeEvents
-  
+	int32_t i;
+	for (i=0;i<NUMTHREADS;i++){ if(tcbs[i].sleep != 0) {	//search for sleeping main threads
+			tcbs[i].sleep --;	//decrement sleep period by 1ms
+		}
+	}
 }
 
 //******** OS_Launch ***************
@@ -127,11 +162,23 @@ void OS_Launch(uint32_t theTimeSlice){
 }
 // runs every ms
 void Scheduler(void){      // every time slice
-// ****IMPLEMENT THIS****
-// look at all threads in TCB list choose
-// highest priority thread not blocked and not sleeping 
-// If there are multiple highest priority (not blocked, not sleeping) run these round robin
-
+	// look at all threads in TCB list choose
+	// highest priority thread not blocked and not sleeping 
+	// If there are multiple highest priority (not blocked, not sleeping) run these round robin
+	// ROUND ROBIN, skip blocked and sleeping threads
+	uint32_t maxprio = 255;
+	tcbType *tempPt;
+	tcbType *bestPt;
+	tempPt = RunPt;
+	do {
+		tempPt = tempPt->next;
+		if(((tempPt->priority) < maxprio) && (tempPt->blocked == 0) && (tempPt->sleep == 0)) { 
+			//If priority is higher and not blocked and not sleeping
+			maxprio = tempPt->priority;
+			bestPt = tempPt;
+		}
+	} while (RunPt != tempPt); //search through all linked list
+	RunPt = bestPt; //move to next suitable thread
 }
 
 //******** OS_Suspend ***************

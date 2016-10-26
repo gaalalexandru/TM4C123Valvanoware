@@ -116,6 +116,10 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -145,22 +149,47 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Time</ItemText>
+          <ItemText>CountA,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Count7</ItemText>
+          <ItemText>CountB,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TakeSoundData</ItemText>
+          <ItemText>CountA,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TakeAccelerationData</ItemText>
+          <ItemText>CountD,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>CountE,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>CountF,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>CountG,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>CountH,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>tcbs,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

@@ -22,8 +22,8 @@ void static runsleep(void);
 struct tcb{
   int32_t *sp;      // pointer to stack (valid for threads not running
   struct tcb *next; // linked-list pointer
-	int32_t *blocked;	// pointer to blocked semaphore, nonzero if blocked on this semaphore
-	int32_t sleep;		// time to sleep, nonzero if this thread is sleeping
+  int32_t *blocked;	// pointer to blocked semaphore, nonzero if blocked on this semaphore
+  int32_t sleep;	// time to sleep, nonzero if this thread is sleeping
 };
 typedef struct tcb tcbType;
 tcbType tcbs[NUMTHREADS];
