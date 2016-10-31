@@ -358,23 +358,55 @@ int32_t *edgeSemaphore;
 // Outputs: none
 void OS_EdgeTrigger_Init(int32_t *semaPt, uint8_t priority){
 	edgeSemaphore = semaPt;
+	uint32_t clock;
+	
 //***IMPLEMENT THIS***
 // 1) activate clock for Port D
+	SYSCTL_RCGCGPIO_R |= 0x08; // activate clock for Port D (bit3) 
+	
 // allow time for clock to stabilize
+	clock = SYSCTL_RCGCGPIO_R;  //Is this necessary?
+	
 // 2) no need to unlock PD6
+	
 // 3) disable analog on PD6
+	GPIO_PORTD_AMSEL_R &= ~0x40;
+	
 // 4) configure PD6 as GPIO
+	GPIO_PORTD_PCTL_R &= ~0x0F000000;
+	
 // 5) make PD6 input
+	GPIO_PORTD_DIR_R &= ~0x40;    // (c) make PD6 input
+	
 // 6) disable alt funct on PD6
+	GPIO_PORTD_AFSEL_R &= ~0x40;
+	
 // disable pull-up on PD6
+	GPIO_PORTD_PUR_R |= 0x40;
+
 // 7) enable digital I/O on PD6  
+	GPIO_PORTD_DEN_R |= 0x40;
+	
 // (d) PD6 is edge-sensitive 
+	GPIO_PORTD_IS_R &= ~0x40;  //(d) PD6 is edge sensitive
+	
 //     PD6 is not both edges 
+	GPIO_PORTD_IBE_R &= ~0x40;  //(d) PD6 not both edges
+	
 //     PD6 is falling edge event 
+	GPIO_PORTD_IEV_R &= ~0x40;  // d) PD6 falling edge
+
 // (e) clear PD6 flag
+	GPIO_PORTD_ICR_R |= 0x40;  //(e) PD6 clear flags
+ 
 // (f) arm interrupt on PD6
+	GPIO_PORTD_IM_R |= 0x40;  //(f) arm interrupt on PD6
+	
 // priority on Port D edge trigger is NVIC_PRI0_R	31 – 29
+	NVIC_PRI0_R = (NVIC_PRI7_R&0x00FFFFFF)|0xA0000000; // (g) priority 5
+	
 // enable is bit 3 in NVIC_EN0_R
+	NVIC_EN0_R |= 0x00000008; //enable bit 3
  }
 
 // ******** OS_EdgeTrigger_Restart ************
@@ -386,12 +418,26 @@ void OS_EdgeTrigger_Restart(void){
 //***IMPLEMENT THIS***
 // rearm interrupt 3 in NVIC
 // clear flag6
+	GPIO_PORTD_IM_R |= 0x40;  //(f) arm interrupt on PD6
+	NVIC_EN0_R |= 0x00000008; //enable bit 3
+	GPIO_PORTD_ICR_R |= 0x40;  //(e) PD6 clear flags	
 }
 void GPIOPortD_Handler(void){
 //***IMPLEMENT THIS***
 	// step 1 acknowledge by clearing flag
   // step 2 signal semaphore (no need to run scheduler)
   // step 3 disarm interrupt to prevent bouncing to create multiple signals
+	uint8_t status;	
+
+	GPIO_PORTD_ICR_R |= 0x40;  //(e) PD6 clear flags	
+	status = GPIO_PORTD_RIS_R;
+	
+	if(status == 0x40) {
+    OS_Signal(edgeSemaphore); // button press occurred
+		GPIO_PORTD_IM_R &= ~0x40;  //disarm interrupt on PD6
+		NVIC_EN0_R &= ~0x00000008; //enable bit 3		
+	}
+  OS_Suspend();	
 }
 
 
