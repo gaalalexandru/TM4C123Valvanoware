@@ -32,7 +32,7 @@
  For more information about my classes, my research, and my books, see
  http://users.ece.utexas.edu/~valvano/
  */
-
+#define BUZZER_LEVEL 512
 
 #include <stdint.h>
 #include "BSP.h"
@@ -459,11 +459,11 @@ void Task7(void){
 // Remember that you must have exactly one main() function, so
 // to work on this step, you must rename all other main()
 // functions in this file.
-int main_final(void){
+int main(void){
   OS_Init();
   Profile_Init();  // initialize the 7 hardware profiling pins
   BSP_Button1_Init();
-  BSP_Button2_Init();
+  //BSP_Button2_Init();
   BSP_RGB_Init(0, 0, 0);
   BSP_Buzzer_Init(0);
   BSP_LCD_Init();
@@ -485,8 +485,8 @@ int main_final(void){
 	OS_PeriodTrigger0_Init(&TakeSoundData,1);  // every 1 ms
 	OS_PeriodTrigger1_Init(&TakeAccelerationData,100); //every 100ms
   // when grading change 1000 to 4-digit number from edX
-  TExaS_Init(GRADER, 8864  );          // initialize the Lab 4 grader
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 4 logic analyzer
+  TExaS_Init(GRADER, 1571  );          // initialize the Lab 4 grader
+  //TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 4 logic analyzer
   OS_Launch(BSP_Clock_GetFreq()/THREADFREQ); // doesn't return, interrupts enabled in here
   return 0;             // this never executes
 }
@@ -700,7 +700,7 @@ void TaskP(void){ // dummy
     CountP++;
   }
 }
-int main(void){
+int main_step2(void){
   OS_Init();
   Profile_Init();  // initialize the 7 hardware profiling pins
   OS_InitSemaphore(&sI, 0);
@@ -711,9 +711,9 @@ int main(void){
 	OS_PeriodTrigger0_Init(&sI,20);  // every 20 ms
 	OS_PeriodTrigger1_Init(&sK,50);  // every 50ms
   OS_AddThreads(&TaskI,0, &TaskJ,1, &TaskK,2, &TaskL,3,
-   	&TaskM,4, &TaskN,5, &TaskO,6, &TaskP,7);
-//  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 4 grader
-  TExaS_Init(GRADESTEP2, 1000);    // initialize the Lab 4 grader
+  &TaskM,4, &TaskN,5, &TaskO,6, &TaskP,7);
+  TExaS_Init(LOGICANALYZER, 1000); // initialize the Lab 4 grader
+  //TExaS_Init(GRADESTEP2, 1000);    // initialize the Lab 4 grader
   OS_Launch(BSP_Clock_GetFreq()/1000);
   return 0;             // this never executes
 }
@@ -755,7 +755,7 @@ void TaskR(void){ // consumer
     TExaS_Task5();
     Profile_Toggle5();
     CountR++;
-		OS_Sleep(10);
+		OS_Sleep(20);	//wait to debounce switch
 		OS_EdgeTrigger_Restart();
   }
 }

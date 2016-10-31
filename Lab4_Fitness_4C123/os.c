@@ -357,24 +357,24 @@ int32_t *edgeSemaphore;
 //          priority
 // Outputs: none
 void OS_EdgeTrigger_Init(int32_t *semaPt, uint8_t priority){
-	edgeSemaphore = semaPt;
 	uint32_t clock;
+	uint32_t bit_prio;
 	
+	edgeSemaphore = semaPt;
 //***IMPLEMENT THIS***
 // 1) activate clock for Port D
-	SYSCTL_RCGCGPIO_R |= 0x08; // activate clock for Port D (bit3) 
-	
+	SYSCTL_RCGCGPIO_R |= 0x00000008; // activate clock for Port D (bit3) 
 // allow time for clock to stabilize
-	clock = SYSCTL_RCGCGPIO_R;  //Is this necessary?
+  while((SYSCTL_PRGPIO_R&0x08) == 0){};// allow time for clock to stabilize	
 	
 // 2) no need to unlock PD6
 	
 // 3) disable analog on PD6
-	GPIO_PORTD_AMSEL_R &= ~0x40;
+	GPIO_PORTD_AMSEL_R &= ~0x40;     // 3) disable analog on PD6
 	
 // 4) configure PD6 as GPIO
-	GPIO_PORTD_PCTL_R &= ~0x0F000000;
-	
+	//GPIO_PORTD_PCTL_R &= ~0x0F000000;
+	GPIO_PORTD_PCTL_R = (GPIO_PORTD_PCTL_R&0xF0FFFFFF)+0x00000000;
 // 5) make PD6 input
 	GPIO_PORTD_DIR_R &= ~0x40;    // (c) make PD6 input
 	
@@ -382,11 +382,10 @@ void OS_EdgeTrigger_Init(int32_t *semaPt, uint8_t priority){
 	GPIO_PORTD_AFSEL_R &= ~0x40;
 	
 // disable pull-up on PD6
-	GPIO_PORTD_PUR_R |= 0x40;
-
+	//GPIO_PORTD_PUR_R |= 0x40;
+  GPIO_PORTD_PUR_R &= ~0x40;       // disable pull-up on PD6
 // 7) enable digital I/O on PD6  
-	GPIO_PORTD_DEN_R |= 0x40;
-	
+	GPIO_PORTD_DEN_R |= 0x40;        // 7) enable digital I/O on PD6
 // (d) PD6 is edge-sensitive 
 	GPIO_PORTD_IS_R &= ~0x40;  //(d) PD6 is edge sensitive
 	
@@ -403,12 +402,24 @@ void OS_EdgeTrigger_Init(int32_t *semaPt, uint8_t priority){
 	GPIO_PORTD_IM_R |= 0x40;  //(f) arm interrupt on PD6
 	
 // priority on Port D edge trigger is NVIC_PRI0_R	31 – 29
-	NVIC_PRI0_R = (NVIC_PRI7_R&0x00FFFFFF)|0xA0000000; // (g) priority 5
-	
+	//NVIC_PRI0_R = (NVIC_PRI7_R&0x00FFFFFF)|0xA0000000; // (g) priority 5
+	bit_prio = (priority << 28);
+	NVIC_PRI0_R = (NVIC_PRI7_R&0x00FFFFFF)|bit_prio; // (g) priority 5
 // enable is bit 3 in NVIC_EN0_R
 	NVIC_EN0_R |= 0x00000008; //enable bit 3
  }
 
+  
+                                   // 4) configure PD6 as GPIO
+  
+
+
+
+
+ 
+ 
+ 
+ 
 // ******** OS_EdgeTrigger_Restart ************
 // restart button1 to signal on a falling edge interrupt
 // rearm interrupt
@@ -428,12 +439,10 @@ void GPIOPortD_Handler(void){
   // step 2 signal semaphore (no need to run scheduler)
   // step 3 disarm interrupt to prevent bouncing to create multiple signals
 	uint8_t status;	
-
-	GPIO_PORTD_ICR_R |= 0x40;  //(e) PD6 clear flags	
 	status = GPIO_PORTD_RIS_R;
-	
 	if(status == 0x40) {
-    OS_Signal(edgeSemaphore); // button press occurred
+		GPIO_PORTD_ICR_R |= 0x40;  //PD6 clear flags
+    OS_Signal(edgeSemaphore);  //button press occurred
 		GPIO_PORTD_IM_R &= ~0x40;  //disarm interrupt on PD6
 		NVIC_EN0_R &= ~0x00000008; //enable bit 3		
 	}
