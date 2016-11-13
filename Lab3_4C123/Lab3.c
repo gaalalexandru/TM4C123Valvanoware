@@ -42,7 +42,7 @@
 
 uint32_t sqrt32(uint32_t s);
 #define THREADFREQ 1000   // frequency in Hz of round robin scheduler
-#define BUZZLEVEL	124	//Buzzer PWM duty cycle
+#define BUZZLEVEL	512	//Buzzer PWM duty cycle
 
 //---------------- Global variables shared between tasks ----------------
 uint32_t Time;              // elasped time in 100 ms units

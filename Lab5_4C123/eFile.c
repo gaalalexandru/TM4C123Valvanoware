@@ -37,10 +37,32 @@ void MountDirectory(void){
 // if the file has no end (i.e. the FAT is corrupted).
 uint8_t lastsector(uint8_t start){
 // **write this function**
-  
+	while ((FAT[start] != 255)&&(start != 255)){
+		start = FAT[start];
+	}		
+	if(FAT[start] == 255){  //last sector of that file
+		return start;
+	}
+	if (start == 255){  // navigated through all FAT
+		return 255; 
+	}
+	return 255;
+}
 	
+	
+	
+	
+/*	
+	uint8_t m = 0;
+  if(start == 255) { return 255; }
+	else {
+		while (m != 255){
+			m = FAT[start];
+			if (
+			start = m
   return 0; // replace this line
 }
+	*/
 
 // Return the index of the first free sector.
 // Note: This function will loop forever without returning
@@ -48,7 +70,15 @@ uint8_t lastsector(uint8_t start){
 // (i.e. the FAT is corrupted).
 uint8_t findfreesector(void){
 // **write this function**
-  
+	int8_t fs = -1;  //free sector
+	uint8_t i = 0;
+	uint8_t ls = 0;  //last sector
+	while(ls != 255) {//until one file end is found
+		ls = lastsector(Directory[i]); //Find the last sector of the current file in directory
+		fs = max(fs,ls);
+		i++;  //move to next file in directory  
+	}
+	if (ls == 255) { return (fs+1);} //return the next sector number
   return 0; // replace this line
 }
 
@@ -60,7 +90,7 @@ uint8_t findfreesector(void){
 // if the file has no end (i.e. the FAT is corrupted).
 uint8_t appendfat(uint8_t num, uint8_t n){
 // **write this function**
-  
+  //AleGaa
 	
   return 0; // replace this line
 }
@@ -72,8 +102,18 @@ uint8_t appendfat(uint8_t num, uint8_t n){
 // Errors: return 255 on failure or disk full
 uint8_t OS_File_New(void){
 // **write this function**
-  
-	
+  static uint8_t i = 0;
+	//Read DIR and FAT from ROM to RAM
+	//AleGaa
+	while ((i != 255)&&(Directory[i] != 255)){
+		i++;
+	}
+	if (Directory[i] == 255) {	//Current directory number / position is free / available
+		return i;
+	}
+	if (i == 255) {  //Directory full
+			return 255;
+		}
   return 255;
 }
 
@@ -97,7 +137,15 @@ uint8_t OS_File_Size(uint8_t num){
 // Errors:  255 on failure or disk full
 uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]){
 // **write this function**
-  
+  uint8_t n = 0;
+	n = findfreesector();
+	if (n == 255) {
+		return 0;
+	}
+	else {
+		eDisk_WriteSector(buf,n);
+		appendfat(num,n);
+	}
   return 0; // replace this line
 }
 

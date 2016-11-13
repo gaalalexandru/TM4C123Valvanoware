@@ -60,9 +60,9 @@ ARM Macro Assembler    Page 1
    36 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    37 00000000         ; </h>
    38 00000000         
-   39 00000000 00000200 
+   39 00000000 00000600 
                        Stack_Size
-                               EQU              0x00000200
+                               EQU              0x00000600
 
 
 
@@ -74,18 +74,18 @@ ARM Macro Assembler    Page 2
 =3
    42 00000000         Stack_Mem
                                SPACE            Stack_Size
-   43 00000200         __initial_sp
-   44 00000200         
-   45 00000200         
-   46 00000200         ; <h> Heap Configuration
-   47 00000200         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-   48 00000200         ; </h>
-   49 00000200         
-   50 00000200 00000000 
+   43 00000600         __initial_sp
+   44 00000600         
+   45 00000600         
+   46 00000600         ; <h> Heap Configuration
+   47 00000600         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   48 00000600         ; </h>
+   49 00000600         
+   50 00000600 00000000 
                        Heap_Size
                                EQU              0x00000000
-   51 00000200         
-   52 00000200                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+   51 00000600         
+   52 00000600                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    53 00000000         __heap_base
    54 00000000         Heap_Mem
@@ -1348,11 +1348,11 @@ ARM Macro Assembler    Page 21
  1033 00000118         
  1034 00000118                 END
               00000000 
-              00000200 
+              00000600 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
 ork --depend=.\objects\startup_tm4c123.d -o.\objects\startup_tm4c123.o -IF:\0_T
-ools\Keil_v5\TM4C123Valvanoware\Lab3_4C123\RTE -IF:\0_Tools\Keil_v5\ARM\PACK\AR
+ools\Keil_v5\TM4C123Valvanoware\Lab5_4C123\RTE -IF:\0_Tools\Keil_v5\ARM\PACK\AR
 M\CMSIS\5.0.0-Beta12\CMSIS\Include -IF:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\
 1.1.0\Device\Include\TM4C123 --predefine="__EVAL SETA 1" --predefine="__UVISION
 _VERSION SETA 521" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1"
@@ -1381,7 +1381,7 @@ Symbol: Stack_Mem
       At line 1024 in file RTE\Device\TM4C123GH6PM\startup_TM4C123.s
       At line 1026 in file RTE\Device\TM4C123GH6PM\startup_TM4C123.s
 
-__initial_sp 00000200
+__initial_sp 00000600
 
 Symbol: __initial_sp
    Definitions
@@ -2711,7 +2711,7 @@ Symbol: Heap_Size
       At line 54 in file RTE\Device\TM4C123GH6PM\startup_TM4C123.s
       At line 1025 in file RTE\Device\TM4C123GH6PM\startup_TM4C123.s
 
-Stack_Size 00000200
+Stack_Size 00000600
 
 Symbol: Stack_Size
    Definitions
