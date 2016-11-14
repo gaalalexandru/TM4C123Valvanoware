@@ -72,7 +72,7 @@ enum DRESULT eDisk_ReadSector(
 // copy 512 bytes from ROM (disk) into RAM (buff)
 // **write this function**
  
-			
+			EDISK_ADDR_MIN
   return RES_OK;
 }
 
@@ -111,8 +111,11 @@ enum DRESULT eDisk_WriteSector(
 enum DRESULT eDisk_Format(void){
 // erase all flash from EDISK_ADDR_MIN to EDISK_ADDR_MAX
 // **write this function**
-  
-	
-	
+	uint32_t address;
+  address = EDISK_ADDR_MIN; // start of disk
+  while(address <= EDISK_ADDR_MAX){
+    Flash_Erase(address); // erase 1k block
+    address = address+BLOCKSIZE;
+  }
   return RES_OK;
 }

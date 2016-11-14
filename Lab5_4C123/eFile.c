@@ -21,14 +21,24 @@ int16_t max(int16_t a, int16_t b){
 // if directory and FAT are not loaded in RAM,
 // bring it into RAM from disk
 void MountDirectory(void){ 
+	uint16_t i = 0;
 // if bDirectoryLoaded is 0, 
 //    read disk sector 255 and populate Directory and FAT
 //    set bDirectoryLoaded=1
 // if bDirectoryLoaded is 1, simply return
 // **write this function**
-
-  
-	
+	if (bDirectoryLoaded == 0) { //If DIR & FAT is in ROM
+		eDisk_ReadSector(Buff,255);
+		for(i=0;i<255;i++) {
+			Directory[i] = Buff[i];	//Read first part of buffer to directory
+		}
+		for(i=255;i<512;i++) {
+			FAT[i-255] = Buff[i];	//Read first part of buffer to FAT
+		}
+		bDirectoryLoaded = 1;
+	}
+	else { return; }
+	return;
 }
 
 // Return the index of the last sector in the file
@@ -48,21 +58,6 @@ uint8_t lastsector(uint8_t start){
 	}
 	return 255;
 }
-	
-	
-	
-	
-/*	
-	uint8_t m = 0;
-  if(start == 255) { return 255; }
-	else {
-		while (m != 255){
-			m = FAT[start];
-			if (
-			start = m
-  return 0; // replace this line
-}
-	*/
 
 // Return the index of the first free sector.
 // Note: This function will loop forever without returning
@@ -91,7 +86,15 @@ uint8_t findfreesector(void){
 uint8_t appendfat(uint8_t num, uint8_t n){
 // **write this function**
   //AleGaa
-	
+	uint8_t i = 0;
+	i = Directory[num];
+	if(i == 255) { Directory[num] = n; } //New file added
+	else {
+		while(FAT[i] != 255) {  //Not last sector of the file
+			i = FAT[i];  //Move to next linked sector
+		}
+		FAT[i] = n;  //New sector added to the file
+	}
   return 0; // replace this line
 }
 
@@ -159,7 +162,8 @@ uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]){
 uint8_t OS_File_Read(uint8_t num, uint8_t location,
                      uint8_t buf[512]){
 // **write this function**
-  
+  eDisk_ReadSector(Buff,location)
+											 
   return 0; // replace this line
 }
 
@@ -184,6 +188,7 @@ uint8_t OS_File_Format(void){
 // call eDiskFormat
 // clear bDirectoryLoaded to zero
 // **write this function**
-
+	eDisk_Format();
+	bDirectoryLoaded = 0;
   return 0; // replace this line
 }

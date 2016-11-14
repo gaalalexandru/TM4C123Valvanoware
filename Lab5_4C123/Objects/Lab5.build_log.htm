@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.21.1.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Gaal Alexandru, Home, LIC=----
+License Information: Gaal Alexandru, none, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.21a
-Toolchain Path:  F:\0_Tools\Keil_v5\ARM\ARMCC\Bin
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 3 (build 300)
 Assembler:       Armasm.exe V5.06 update 3 (build 300)
 Linker/Locator:  ArmLink.exe V5.06 update 3 (build 300)
@@ -21,21 +21,36 @@ Target DLL:      lmidk-agdi.dll V???
 Dialog DLL:      TCM.DLL V1.14.14.0
  
 <h2>Project:</h2>
-F:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab5_4C123\Lab5.uvprojx
-Project File Date:  09/14/2016
+C:\Keil_v5\TM4C123Valvanoware\Lab5_4C123\Lab5.uvprojx
+Project File Date:  11/14/2016
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'F:\0_Tools\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target'
 compiling eFile.c...
-linking...
-Program Size: Code=12288 RO-data=3312 RW-data=100 ZI-data=3716  
-".\Objects\Lab5.axf" - 0 Error(s), 0 Warning(s).
+eFile.c(31): error:  #167: argument of type "int32_t" is incompatible with parameter of type "uint8_t *"
+  		bDirectoryLoaded = 1;
+eFile.c(31): error:  #165: too few arguments in function call
+  		bDirectoryLoaded = 1;
+eFile.c(31): error:  #18: expected a ")"
+  		bDirectoryLoaded = 1;
+eFile.c: 0 warnings, 3 errors
+compiling eDisk.c...
+eDisk.c(75): warning:  #174-D: expression has no effect
+  			EDISK_ADDR_MIN
+eDisk.c(76): error:  #65: expected a ";"
+    return RES_OK;
+eDisk.c(77): warning:  #940-D: missing return statement at end of non-void function "eDisk_ReadSector"
+  }
+eDisk.c(118): error:  #20: identifier "BLOCKSIZE" is undefined
+      address = address+BLOCKSIZE;
+eDisk.c: 2 warnings, 2 errors
+".\Objects\Lab5.axf" - 5 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.0.0-Beta12.pack
+                http://www.keil.com/pack/ARM.CMSIS.5.0.0-Beta4.pack
                 ARM::CMSIS:CORE:5.0.0
                 CMSIS (Cortex Microcontroller Software Interface Standard)
    * Component: CORE Version: 5.0.0
@@ -47,9 +62,9 @@ Package Vendor: Keil
    * Component: Startup Version: 1.0.1
 
 <h2>Collection of Component include folders:</h2>
-  F:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab5_4C123\RTE
-  F:\0_Tools\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include
-  F:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
+  C:\Keil_v5\TM4C123Valvanoware\Lab5_4C123\RTE
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta4\CMSIS\Include
+  C:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
 <h2>Collection of Component Files used:</h2>
 
@@ -59,7 +74,8 @@ Package Vendor: Keil
       Include file:  Device\Include\TM4C123\TM4C123.h
       Source file:   Device\Source\ARM\startup_TM4C123.s
       Source file:   Device\Source\system_TM4C123.c
-Build Time Elapsed:  00:00:01
+Target not created.
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>
