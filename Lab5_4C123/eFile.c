@@ -70,10 +70,11 @@ uint8_t findfreesector(void){
 	uint8_t ls = 0;  //last sector
 	while(ls != 255) {//until one file end is found
 		ls = lastsector(Directory[i]); //Find the last sector of the current file in directory
+		if (ls == 255) { return (fs+1);} //return the next sector number
 		fs = max(fs,ls);
+		
 		i++;  //move to next file in directory  
 	}
-	if (ls == 255) { return (fs+1);} //return the next sector number
   return 0; // replace this line
 }
 
@@ -106,7 +107,9 @@ uint8_t appendfat(uint8_t num, uint8_t n){
 uint8_t OS_File_New(void){
 // **write this function**
   static uint8_t i = 0;
-	//Read DIR and FAT from ROM to RAM
+	if(!bDirectoryLoaded) {
+		MountDirectory(); 	//Read DIR and FAT from ROM to RAM
+	}
 	//AleGaa
 	while ((i != 255)&&(Directory[i] != 255)){
 		i++;
@@ -141,6 +144,9 @@ uint8_t OS_File_Size(uint8_t num){
 uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]){
 // **write this function**
   uint8_t n = 0;
+	if(!bDirectoryLoaded) {
+		MountDirectory(); 	//Read DIR and FAT from ROM to RAM //AleGaa
+	}
 	n = findfreesector();
 	if (n == 255) {
 		return 0;
@@ -162,7 +168,7 @@ uint8_t OS_File_Append(uint8_t num, uint8_t buf[512]){
 uint8_t OS_File_Read(uint8_t num, uint8_t location,
                      uint8_t buf[512]){
 // **write this function**
-  eDisk_ReadSector(Buff,location)
+  eDisk_ReadSector(buf,location);
 											 
   return 0; // replace this line
 }

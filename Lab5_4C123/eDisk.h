@@ -35,7 +35,7 @@
 #define EDISK_ADDR_MIN      0x00020000  // Flash Bank1 minimum address
 #define EDISK_ADDR_MAX      0x0003FFFF  // Flash Bank1 maximum address
 #define BLOCKSIZE (1024)  //TM4C block size
-
+#define WORDSPERSECTOR (128)
 enum DRESULT{
   RES_OK = 0,                 // Successful
   RES_ERROR = 1,              // R/W Error

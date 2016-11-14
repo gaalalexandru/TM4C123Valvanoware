@@ -65,15 +65,29 @@ enum DRESULT eDisk_Init(uint32_t drive){
 //  RES_NOTRDY    3: Not Ready
 //  RES_PARERR    4: Invalid Parameter
 enum DRESULT eDisk_ReadSector(
-    uint8_t *buff,     // Pointer to a RAM buffer into which to store
-    uint8_t sector){   // sector number to read from
+	uint8_t *buff,     // Pointer to a RAM buffer into which to store
+	//uint32_t *buff,     // Pointer to a RAM buffer into which to store  //AleGaa
+	uint8_t sector){   // sector number to read from
 // starting ROM address of the sector is	EDISK_ADDR_MIN + 512*sector
 // return RES_PARERR if EDISK_ADDR_MIN + 512*sector > EDISK_ADDR_MAX
 // copy 512 bytes from ROM (disk) into RAM (buff)
 // **write this function**
- 
-			EDISK_ADDR_MIN
-  return RES_OK;
+	uint32_t start_address;
+	uint8_t *ptROM;
+	uint16_t i;
+	
+	start_address = (EDISK_ADDR_MIN + (512*sector));  //calculate start address
+	ptROM = (uint8_t *)start_address;	//copy start address in ptROM
+	
+	if((start_address <= EDISK_ADDR_MAX)&&(sector <= 255)) {  //valid sector number
+		for(i=0;i<512;i++) {
+			*buff = *ptROM;  //copy first byte to buffer
+			ptROM++;  //increment with 1 byte
+			buff++;  //increment with 1 byte
+		}
+	return RES_OK;
+	}
+  return RES_PARERR;
 }
 
 //*************** eDisk_WriteSector ***********
@@ -87,15 +101,35 @@ enum DRESULT eDisk_ReadSector(
 //  RES_NOTRDY    3: Not Ready
 //  RES_PARERR    4: Invalid Parameter
 enum DRESULT eDisk_WriteSector(
-    const uint8_t *buff,  // Pointer to the data to be written
-    uint8_t sector){      // sector number
+	const uint8_t *buff,  // Pointer to the data to be written
+	uint8_t sector){      // sector number
+	uint32_t source[WORDSPERSECTOR];
+	uint32_t start_address;
+	uint8_t i;
+		
 // starting ROM address of the sector is	EDISK_ADDR_MIN + 512*sector
 // return RES_PARERR if EDISK_ADDR_MIN + 512*sector > EDISK_ADDR_MAX
 // write 512 bytes from RAM (buff) into ROM (disk)
 // you can use Flash_FastWrite or Flash_WriteArray
 // **write this function**
-  
-			
+
+	start_address = (EDISK_ADDR_MIN + (512*sector));  //calculate start address
+	/*for(i=0;i<WORDSPERSECTOR;i++) {
+		source[i] = (uint32_t)buff;
+		buff++;
+	}*/
+	
+	Flash_WriteArray((uint32_t *)buff,start_address,WORDSPERSECTOR);
+
+
+//------------Flash_WriteArray------------
+// Write an array of 32-bit data to flash starting at given address.
+// Input: source pointer to array of 32-bit data
+//        addr   4-byte aligned flash memory address to start writing
+//        count  number of 32-bit writes
+// Output: number of successful writes; return value == count if completely successful
+// Note: at 80 MHz, it takes 678 usec to write 10 words
+// Note: disables interrupts while writing			
   return RES_OK;
 }
 
