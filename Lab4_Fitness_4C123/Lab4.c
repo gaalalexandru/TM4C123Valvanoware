@@ -294,10 +294,11 @@ void Task3(void){
   while(1){
 		OS_Wait(&SwitchTouch); // OS signals on touch
     TExaS_Task3();         // records system time in array, toggles virtual logic analyzer
-    Profile_Toggle3();     // viewed by the logic analyzer to know Task3 started
+    Profile_Toggle4(); // viewed by the logic analyzer to know Task4 started
     OS_Sleep(10);          // debounce the switches
     current = BSP_Button1_Input();
     if(current == 0){     // Button1 was pressed 
+			    Profile_Toggle3();     // viewed by the logic analyzer to know Task3 started
       BSP_Buzzer_Set(512);   // beep for 20ms
       OS_Sleep(20);          
       BSP_Buzzer_Set(0);
@@ -330,7 +331,7 @@ void Task4(void){int32_t voltData,tempData;
   int done;
   while(1){
     TExaS_Task4();     // records system time in array, toggles virtual logic analyzer
-    Profile_Toggle4(); // viewed by the logic analyzer to know Task4 started
+
 
     OS_Wait(&I2Cmutex);
     BSP_TempSensor_Start();

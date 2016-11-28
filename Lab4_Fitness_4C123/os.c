@@ -404,22 +404,11 @@ void OS_EdgeTrigger_Init(int32_t *semaPt, uint8_t priority){
 // priority on Port D edge trigger is NVIC_PRI0_R	31 – 29
 	//NVIC_PRI0_R = (NVIC_PRI7_R&0x00FFFFFF)|0xA0000000; // (g) priority 5
 	bit_prio = (priority << 28);
-	NVIC_PRI0_R = (NVIC_PRI7_R&0x00FFFFFF)|bit_prio; // (g) priority 5
+	NVIC_PRI0_R = (NVIC_PRI0_R&0x00FFFFFF)|bit_prio; // (g) priority 5
 // enable is bit 3 in NVIC_EN0_R
 	NVIC_EN0_R |= 0x00000008; //enable bit 3
  }
 
-  
-                                   // 4) configure PD6 as GPIO
-  
-
-
-
-
- 
- 
- 
- 
 // ******** OS_EdgeTrigger_Restart ************
 // restart button1 to signal on a falling edge interrupt
 // rearm interrupt

@@ -1,5 +1,5 @@
 Dependencies for Project 'Lab4', Target 'Target': (DO NOT MODIFY !)
-F (.\Lab4.c)(0x581DF412)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-IF:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab4_Fitness_4C123\RTE-IF:\0_Tools\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include-IF:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\lab4.o --omf_browse .\objects\lab4.crf --depend .\objects\lab4.d)
+F (.\Lab4.c)(0x583AC1A5)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-IF:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab4_Fitness_4C123\RTE-IF:\0_Tools\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include-IF:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\lab4.o --omf_browse .\objects\lab4.crf --depend .\objects\lab4.d)
 I (F:\0_Tools\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E9286)
 I (../inc/BSP.h)(0x57E4B58C)
 I (../inc/Profile.h)(0x575817E4)
@@ -11,7 +11,7 @@ I (F:\0_Tools\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E9286)
 I (..\inc\BSP.h)(0x57E4B58C)
 I (..\inc\../inc/tm4c123gh6pm.h)(0x5388525A)
 F (.\osasm.s)(0x5810FBA8)(--cpu Cortex-M4 --pd "__EVAL SETA 1" -g --apcs=interwork -IF:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab4_Fitness_4C123\RTE-IF:\0_Tools\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include-IF:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\listings\osasm.lst --xref -o .\objects\osasm.o --depend .\objects\osasm.d)
-F (.\os.c)(0x581FB4EE)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-IF:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab4_Fitness_4C123\RTE-IF:\0_Tools\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include-IF:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\os.o --omf_browse .\objects\os.crf --depend .\objects\os.d)
+F (.\os.c)(0x583AC0AD)(--c99 -c --cpu Cortex-M4 -D__EVAL -g -O0 --apcs=interwork --split_sections --signed_chars -I ../inc-IF:\0_Tools\Keil_v5\TM4C123Valvanoware\Lab4_Fitness_4C123\RTE-IF:\0_Tools\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0-Beta12\CMSIS\Include-IF:\0_Tools\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="521" -D_RTE_ -DTM4C123GH6PM-o .\objects\os.o --omf_browse .\objects\os.crf --depend .\objects\os.d)
 I (F:\0_Tools\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E9286)
 I (os.h)(0x57D74216)
 I (../inc/CortexM.h)(0x57E4B5D8)
