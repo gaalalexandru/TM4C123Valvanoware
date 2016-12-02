@@ -93,11 +93,12 @@ const uint8_t NPI_SetAdvertisementMsg[] = {
   0xEE};          // FCS (calculated by AP_SendMessageResponse)
 
 const uint8_t NPI_GATTSetDeviceNameMsg[] = {   
-  SOF,18,0x00,    // length = 18
+  SOF,14,0x00,    // length = 14
   0x35,0x8C,      // SNP Set GATT Parameter (0x8C)
   0x01,           // Generic Access Service
   0x00,0x00,      // Device Name
-  'S','h','a','p','e',' ','t','h','e',' ','W','o','r','l','d',
+//  'S','h','a','p','e',' ','t','h','e',' ','W','o','r','l','d',
+  'S','a','a','l',' ','G','a','n','d','o','r',
   0x77};          // FCS (calculated by AP_SendMessageResponse)
 
 
