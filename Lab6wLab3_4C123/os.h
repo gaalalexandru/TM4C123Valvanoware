@@ -107,7 +107,7 @@ void OS_Wait(int32_t *semaPt);
 void OS_Signal(int32_t *semaPt);
 
 // ******** OS_FIFO_Init ************
-// Initialize FIFO.  
+// Initialize FIFO. 
 // One event thread producer, one main thread consumer
 // Inputs:  none
 // Outputs: none

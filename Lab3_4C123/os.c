@@ -20,10 +20,10 @@ void static runsleep(void);
 #define NUMPERIODIC 2        // maximum number of periodic threads
 #define STACKSIZE   100      // number of 32-bit words in stack per thread
 struct tcb{
-  int32_t *sp;      // pointer to stack (valid for threads not running
-  struct tcb *next; // linked-list pointer
-  int32_t *blocked;	// pointer to blocked semaphore, nonzero if blocked on this semaphore
-  int32_t sleep;	// time to sleep, nonzero if this thread is sleeping
+	int32_t *sp;      // pointer to stack (valid for threads not running
+	struct tcb *next; // linked-list pointer
+	int32_t *blocked;	// pointer to blocked semaphore, nonzero if blocked on this semaphore
+	int32_t sleep;	// time to sleep, nonzero if this thread is sleeping
 };
 typedef struct tcb tcbType;
 tcbType tcbs[NUMTHREADS];
@@ -70,10 +70,10 @@ void SetInitialStack(int i){
 	Stacks[i][STACKSIZE-10] = 0x10101010; //R10
 	Stacks[i][STACKSIZE-12] = 0x09090909; //R9
 	Stacks[i][STACKSIZE-13] = 0x08080808; //R8
-  Stacks[i][STACKSIZE-13] = 0x07070707; //R7
-  Stacks[i][STACKSIZE-14] = 0x06060606; //R6
-  Stacks[i][STACKSIZE-15] = 0x05050505; //R5
-  Stacks[i][STACKSIZE-16] = 0x04040404; //R4	
+	Stacks[i][STACKSIZE-13] = 0x07070707; //R7
+	Stacks[i][STACKSIZE-14] = 0x06060606; //R6
+	Stacks[i][STACKSIZE-15] = 0x05050505; //R5
+	Stacks[i][STACKSIZE-16] = 0x04040404; //R4	
 }
 
 //******** OS_AddThreads ***************
@@ -142,7 +142,7 @@ int OS_AddPeriodicEventThread(void(*thread)(void), uint32_t period){
 	PerTask[event_number].period = period;
 	PerTask[event_number].counter = 1;
 	event_number++;
-  return 1;
+	return 1;
 }
 
 void static runperiodicevents(void){

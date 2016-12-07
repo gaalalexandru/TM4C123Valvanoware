@@ -50,6 +50,15 @@ extern const uint32_t NOTIFYMAXCHARACTERISTICS;
 extern uint32_t NotifyCharacteristicCount;
 extern NotifyCharacteristic_t NotifyCharacteristicList[];
 //**************Lab 6 routines*******************
+
+uint8_t GetStringSize(char name[]){
+	uint8_t i = 0;
+  	while(name[i]) {
+		i++;
+	}
+return i;
+}
+
 // **********SetFCS**************
 // helper function, add check byte to message
 // assumes every byte in the message has been set except the FCS
@@ -60,8 +69,16 @@ extern NotifyCharacteristic_t NotifyCharacteristicList[];
 // Outputs: none
 void SetFCS(uint8_t *msg){
 //****You implement this function as part of Lab 6*****
-
-  
+  uint8_t frame_check_lenght;
+	uint8_t i;
+	uint8_t fcs = 0;
+	uint8_t data_lenght;
+	data_lenght = AP_GetSize(msg);
+	frame_check_lenght = data_lenght + 4; // is equal to the message data length + 4 (2x length byte + 2x command byte)
+	for (i = 1;i <= frame_check_lenght; i++) {
+		fcs ^= msg[i];
+	}
+	msg[frame_check_lenght+1] = fcs;
 }
 //*************BuildGetStatusMsg**************
 // Create a Get Status message, used in Lab 6
@@ -71,8 +88,11 @@ void SetFCS(uint8_t *msg){
 void BuildGetStatusMsg(uint8_t *msg){
 // hint: see NPI_GetStatus in AP.c
 //****You implement this function as part of Lab 6*****
-
-  
+	msg[0] = SOF;
+	msg[1] = 0x00; msg[2] = 0x00; //Length
+	msg[3] = 0x55; msg[4] = 0x06; //SNP Get Status
+  SetFCS(msg);
+/*const uint8_t NPI_GetStatus[] =   {SOF,0x00,0x00,0x55,0x06,0x53};*/  
 }
 //*************Lab6_GetStatus**************
 // Get status of connection, used in Lab 6
@@ -97,8 +117,11 @@ uint32_t Lab6_GetStatus(void){volatile int r; uint8_t sendMsg[8];
 void BuildGetVersionMsg(uint8_t *msg){
 // hint: see NPI_GetVersion in AP.c
 //****You implement this function as part of Lab 6*****
-  
-  
+	msg[0] = SOF;
+	msg[1] = 0x00; msg[2] = 0x00; //Length
+	msg[3] = 0x35; msg[4] = 0x03; //SNP Get Version
+  SetFCS(msg);	
+/*const uint8_t NPI_GetVersion[] =  {SOF,0x00,0x00,0x35,0x03,0x36};*/  
 }
 //*************Lab6_GetVersion**************
 // Get version of the SNP application running on the CC2650, used in Lab 6
@@ -119,15 +142,30 @@ uint32_t Lab6_GetVersion(void){volatile int r;uint8_t sendMsg[8];
 // build the necessary NPI message that will add a service
 void BuildAddServiceMsg(uint16_t uuid, uint8_t *msg){
 //****You implement this function as part of Lab 6*****
-  
-  
+  msg[0] = SOF;
+  msg[1] = 3; msg[2] = 0x00; //Length
+  msg[3] = 0x35; msg[4] = 0x81; //SNP Add Service
+  msg[5] = 0x01; //Primary service
+  msg[6] = uuid&0xFF;
+  msg[7] = uuid>>8;
+  SetFCS(msg);
+	/*
+	uint8_t NPI_AddService[] = {
+  SOF,3,0x00,     // length = 3
+  0x35,0x81,      // SNP Add Service
+  0x01,           // Primary Service
+  0xF0,0xFF,
+  0xB9};          // FCS (calculated by AP_SendMessageResponse)
+	*/
 }
 //*************Lab6_AddService**************
 // Add a service, used in Lab 6
 // Inputs uuid is 0xFFF0, 0xFFF1, ...
 // Output APOK if successful,
 //        APFAIL if SNP failure
-int Lab6_AddService(uint16_t uuid){ int r; uint8_t sendMsg[12];
+int Lab6_AddService(uint16_t uuid){ 
+	int r; 
+	uint8_t sendMsg[12]; //AleGaa: Was NPI_AddService ???
   OutString("\n\rAdd service");
   BuildAddServiceMsg(uuid,sendMsg);
   r = AP_SendMessageResponse(sendMsg,RecvBuf,RECVSIZE);  
@@ -140,15 +178,25 @@ int Lab6_AddService(uint16_t uuid){ int r; uint8_t sendMsg[12];
 // build the necessary NPI message that will register a service
 void BuildRegisterServiceMsg(uint8_t *msg){
 //****You implement this function as part of Lab 6*****
-  
-  
+  msg[0] = SOF;
+	msg[1] = 0x00; msg[2] = 0x00; //Length
+	msg[3] = 0x35; msg[4] = 0x84;  //SNP Register Service
+	SetFCS(msg); //See if function has to be modified to be 0 if size is 0 ???
+  /*
+	const uint8_t NPI_Register[] = {   
+  SOF,0x00,0x00,  // length = 0
+  0x35,0x84,      // SNP Register Service
+  0x00};          // FCS (calculated by AP_SendMessageResponse)
+	*/
 }
 //*************Lab6_RegisterService**************
 // Register a service, used in Lab 6
 // Inputs none
 // Output APOK if successful,
 //        APFAIL if SNP failure
-int Lab6_RegisterService(void){ int r; uint8_t sendMsg[8];
+int Lab6_RegisterService(void){ 
+	int r; 
+	uint8_t sendMsg[8]; //AleGaa: was NPI_Register ???
   OutString("\n\rRegister service");
   BuildRegisterServiceMsg(sendMsg);
   r = AP_SendMessageResponse(sendMsg,RecvBuf,RECVSIZE);
@@ -293,8 +341,27 @@ void BuildSetDeviceNameMsg(char name[], uint8_t *msg){
 // for a hint see NPI_GATTSetDeviceNameMsg in VerySimpleApplicationProcessor.c
 // for a hint see NPI_GATTSetDeviceName in AP.c
 //****You implement this function as part of Lab 6*****
-  
-  
+	uint8_t i = 0;
+	msg[0] = SOF;
+	msg[1] = 3 + GetStringSize(name); msg[2] = 0x00; //Length
+	msg[3] = 0x35; msg[4] = 0x8C; //SNP Set GATT Parameter (0x8C)
+	msg[5] = 0x01; //Generic Access Service
+	msg[6] = 0x00; msg[7] = 0x00; // Device Name
+	/*Shape the World*/
+	while(name[i]){
+		msg[8+i] = name[i]; //Add string to message
+		i++;
+	}
+  SetFCS(msg);
+/*
+	uint8_t NPI_GATTSetDeviceName[] = {   
+  SOF,22,0x00,    // length = 22
+  0x35,0x8C,      // SNP Set GATT Parameter (0x8C)
+  0x01,           // Generic Access Service
+	6,7:  0x00,0x00,      // Device Name
+  'S','h','a','p','e',' ','t','h','e',' ','W','o','r','l','d',' ','0','0','1',
+  0x77};          // FCS (calculated by AP_SendMessageResponse)
+*/  
 }
 //*************BuildSetAdvertisementData1Msg**************
 // Create a Set Advertisement Data message, used in Lab 6
@@ -311,8 +378,30 @@ void BuildSetAdvertisementData1Msg(uint8_t *msg){
 // TI_ST_KEY_DATA_ID
 // Key state=0
 //****You implement this function as part of Lab 6*****
-  
-  
+	msg[0] = SOF;
+	msg[1] = 11; msg[2] = 0x00; //Length
+	msg[3] = 0x55; msg[4] = 0x43; //SNP Set Advertisement Data
+	msg[5] = 0x01;  //Not connected Advertisement Data
+	msg[6] = 0x02; msg[7] = 0x01; msg[8] = 0x06;  //GAP_ADTYPE_FLAGS,DISCOVERABLE | no BREDR
+	msg[9] = 0x06; msg[10] = 0xFF;  //length, manufacturer specific
+	msg[11] = 0x0D; msg[12] = 0x00;  //Texas Instruments Company ID = 0x000D
+	msg[13] = 0x03;  //TI_ST_DEVICE_ID
+	msg[14] = 0x00;  //TI_ST_KEY_DATA_ID
+	msg[15] = 0x00;  //Key state
+	SetFCS(msg);
+/*
+	const uint8_t NPI_SetAdvertisement1[] = {   
+0,1,2:  SOF,11,0x00,    // length = 11
+3,4:  0x55,0x43,      // SNP Set Advertisement Data
+5:  0x01,           // Not connected Advertisement Data
+6,7,8:  0x02,0x01,0x06, // GAP_ADTYPE_FLAGS,DISCOVERABLE | no BREDR
+9,10:  0x06,0xFF,      // length, manufacturer specific
+11,12:  0x0D ,0x00,     // Texas Instruments Company ID
+13:  0x03,           // TI_ST_DEVICE_ID
+14:  0x00,           // TI_ST_KEY_DATA_ID
+15:  0x00,           // Key state
+16:  0xEE};          // FCS (calculated by AP_SendMessageResponse)
+*/	
 }
 
 //*************BuildSetAdvertisementDataMsg**************
@@ -322,11 +411,54 @@ void BuildSetAdvertisementData1Msg(uint8_t *msg){
 // Output none
 // build the necessary NPI message for Scan Response Data
 void BuildSetAdvertisementDataMsg(char name[], uint8_t *msg){
+	uint8_t i,j;
 // for a hint see NPI_SetAdvertisementDataMsg in VerySimpleApplicationProcessor.c
 // for a hint see NPI_SetAdvertisementData in AP.c
 //****You implement this function as part of Lab 6*****
-  
-  
+	msg[0] = SOF;
+	/**/
+	msg[1] = 3 + GetStringSize(name) + 9; msg[2] = 0x00; //Length
+	msg[3] = 0x55; msg[4] = 0x43; //SNP Set Advertisement Data
+	msg[5] = 0x00;  //Scan Response Data
+	
+	msg[6] = 1 + GetStringSize(name);  //length of this data
+	msg[7] = 0x09;  //type=LOCAL_NAME_COMPLETE  //AleGaa Check length
+	//Shape the World
+	while(name[i]){
+		msg[8+i] = name[i]; //Add string to message
+		i++;
+	} 
+// connection interval range
+	j = 8+i;
+	msg[j] = 0x05; 	j++;  //length of this data
+	msg[j] = 0x12; 	j++;  //GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE
+	msg[j] = 0x50; 	j++;  //DEFAULT_DESIRED_MIN_CONN_INTERVAL
+	msg[j] = 0x00; 	j++;  //DEFAULT_DESIRED_MIN_CONN_INTERVAL	
+	msg[j] = 0x20; 	j++;  //DEFAULT_DESIRED_MAX_CONN_INTERVAL
+	msg[j] = 0x03; 	j++;  //DEFAULT_DESIRED_MAX_CONN_INTERVAL
+// Tx power level	
+	msg[j] = 0x02; 	j++;  //length of this data
+	msg[j] = 0x0A; 	j++;  //AP_ADTYPE_POWER_LEVEL
+	msg[j] = 0x00; 	j++;  //0dBm
+	SetFCS(msg);  
+/*
+uint8_t NPI_SetAdvertisementData[] = {   
+  SOF,31,0x00,    // length = 32
+  0x55,0x43,      // SNP Set Advertisement Data
+  0x00,           // Scan Response Data
+6,7:  20,0x09,        // length, type=LOCAL_NAME_COMPLETE
+  'S','h','a','p','e',' ','t','h','e',' ','W','o','r','l','d',' ','0','0','1',
+// connection interval range
+  0x05,           // length of this data
+  0x12,           // GAP_ADTYPE_SLAVE_CONN_INTERVAL_RANGE
+  0x50,0x00,      // DEFAULT_DESIRED_MIN_CONN_INTERVAL
+  0x20,0x03,      // DEFAULT_DESIRED_MAX_CONN_INTERVAL
+// Tx power level
+  0x02,           // length of this data
+  0x0A,           // GAP_ADTYPE_POWER_LEVEL
+  0x00,           // 0dBm
+  0x77};          // FCS (calculated by AP_SendMessageResponse)
+*/
 }
 //*************BuildStartAdvertisementMsg**************
 // Create a Start Advertisement Data message, used in Lab 6
@@ -339,7 +471,6 @@ void BuildStartAdvertisementMsg(uint16_t interval, uint8_t *msg){
 // for a hint see NPI_StartAdvertisement in AP.c
 //****You implement this function as part of Lab 6*****
   
-  
 }
 
 //*************Lab6_StartAdvertisement**************
@@ -347,16 +478,22 @@ void BuildStartAdvertisementMsg(uint16_t interval, uint8_t *msg){
 // Input:  none
 // Output: APOK if successful,
 //         APFAIL if notification not configured, or if SNP failure
-int Lab6_StartAdvertisement(void){volatile int r; uint8_t sendMsg[32];
+int Lab6_StartAdvertisement(void){
+	volatile int r; 
+	uint8_t sendMsg[32];
+	
   OutString("\n\rSet Device name");
-  BuildSetDeviceNameMsg("Shape the World",sendMsg);
+  BuildSetDeviceNameMsg("Shape the World",sendMsg);  //AleGaa Done
   r =AP_SendMessageResponse(sendMsg,RecvBuf,RECVSIZE);
+	
   OutString("\n\rSetAdvertisement1");
-  BuildSetAdvertisementData1Msg(sendMsg);
+  BuildSetAdvertisementData1Msg(sendMsg);  //AleGaa Done
   r =AP_SendMessageResponse(sendMsg,RecvBuf,RECVSIZE);
+	
   OutString("\n\rSetAdvertisement Data");
-  BuildSetAdvertisementDataMsg("Shape the World",sendMsg);
+  BuildSetAdvertisementDataMsg("Shape the World",sendMsg); //AleGaa Done
   r =AP_SendMessageResponse(sendMsg,RecvBuf,RECVSIZE);
+	
   OutString("\n\rStartAdvertisement");
   BuildStartAdvertisementMsg(100,sendMsg);
   r =AP_SendMessageResponse(sendMsg,RecvBuf,RECVSIZE);
