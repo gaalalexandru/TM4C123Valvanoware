@@ -578,6 +578,8 @@ int AP_AddCharacteristic(uint16_t uuid, uint16_t thesize, void *pt, uint8_t perm
   NPI_AddCharValue[11] = 0xFF&uuid; NPI_AddCharValue[12] = uuid>>8;
   OutString("\n\rAdd CharValue");
   r=AP_SendMessageResponse((uint8_t*)NPI_AddCharValue,RecvBuf,RECVSIZE);
+		
+		
   if(r == APFAIL) return APFAIL;
   handle = (RecvBuf[7]<<8)+RecvBuf[6]; // handle for this characteristic
   OutString("\n\rAdd CharDescriptor");

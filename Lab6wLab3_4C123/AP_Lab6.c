@@ -211,15 +211,33 @@ int Lab6_RegisterService(void){
 //        pointer to empty buffer of at least 14 bytes
 // Output none
 // build the necessary NPI message that will add a characteristic value
-void BuildAddCharValueMsg(uint16_t uuid,  
-  uint8_t permission, uint8_t properties, uint8_t *msg){
+void BuildAddCharValueMsg(uint16_t uuid, uint8_t permission, uint8_t properties, uint8_t *msg){
 // set RFU to 0 and
 // set the maximum length of the attribute value=512
 // for a hint see NPI_AddCharValue in AP.c
 // for a hint see first half of AP_AddCharacteristic and first half of AP_AddNotifyCharacteristic
 //****You implement this function as part of Lab 6*****
-  
-    
+  msg[0] = SOF;
+	msg[1] = 0x08; msg[2] = 0x00;  //length = 8
+	msg[3] = 0x35; msg[4] = 0x82;  //SNP Add Characteristic Value Declaration
+	msg[5] = permission;  // 0=none,1=read,2=write, 3=Read+write, GATT Permission
+	
+	
+	
+	SetFCS(msg); //See if function has to be modified to be 0 if size is 0 ???
+	
+	
+/*
+	uint8_t NPI_AddCharValue[] = {   
+  SOF,0x08,0x00,  // length = 8
+  0x35,0x82,      // SNP Add Characteristic Value Declaration
+  0x03,           // 0=none,1=read,2=write, 3=Read+write, GATT Permission
+  0x0A,0x00,      // 2=read,8=write,0x0A=read+write,0x10=notify, GATT Properties
+  0x00,           // RFU
+  0x00,0x02,      // Maximum length of the attribute value=512
+  0xF1,0xFF,      // UUID
+  0xBA};          // FCS (calculated by AP_SendMessageResponse)
+*/	
 }
 
 //*************BuildAddCharDescriptorMsg**************
