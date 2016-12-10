@@ -40,9 +40,9 @@ void static runperiodicevents(void);
 void OS_Init(void){
   DisableInterrupts();
   BSP_Clock_InitFastest();// set processor clock to fastest speed
-	BSP_PeriodicTask_Init(runperiodicevents,1000,4);	//Start one HW Timer with periodic interrupt at 1000 Hz
 // perform any initializations needed, 
 // set up periodic timer to run runperiodicevents to implement sleeping
+  BSP_PeriodicTask_Init(runperiodicevents,1000,4);	//Start one HW Timer with periodic interrupt at 1000 Hz
 }
 
 void SetInitialStack(int i){
@@ -135,7 +135,6 @@ int OS_AddThreads(void(*thread0)(void), uint32_t p0,
 
 
 void static runperiodicevents(void){
-// ****IMPLEMENT THIS****
 // **DECREMENT SLEEP COUNTERS
 // In Lab 4, handle periodic events in RealTimeEvents
 	int32_t i;
@@ -320,7 +319,7 @@ void RealTimeEvents(void){int flag=0;
     if((realCount%Period1)==0){
       OS_Signal(PeriodicSemaphore1);
       flag=1;
-		}
+	}
     if(flag){
       OS_Suspend(); // run the scheduler
     }

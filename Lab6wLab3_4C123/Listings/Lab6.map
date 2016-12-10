@@ -176,6 +176,11 @@ Section Cross References
     os.o(i.SetInitialStack) refers to os.o(.bss) for Stacks
     os.o(i.runperiodicevents) refers to os.o(.bss) for PerTask
     os.o(i.runsleep) refers to os.o(.bss) for tcbs
+    ap_lab6.o(i.BuildAddCharDescriptorMsg) refers to ap_lab6.o(i.GetStringSize) for GetStringSize
+    ap_lab6.o(i.BuildAddCharDescriptorMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
+    ap_lab6.o(i.BuildAddCharValueMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
+    ap_lab6.o(i.BuildAddNotifyCharDescriptorMsg) refers to ap_lab6.o(i.GetStringSize) for GetStringSize
+    ap_lab6.o(i.BuildAddNotifyCharDescriptorMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
     ap_lab6.o(i.BuildAddServiceMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
     ap_lab6.o(i.BuildGetStatusMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
     ap_lab6.o(i.BuildGetVersionMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
@@ -185,6 +190,7 @@ Section Cross References
     ap_lab6.o(i.BuildSetAdvertisementDataMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
     ap_lab6.o(i.BuildSetDeviceNameMsg) refers to ap_lab6.o(i.GetStringSize) for GetStringSize
     ap_lab6.o(i.BuildSetDeviceNameMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
+    ap_lab6.o(i.BuildStartAdvertisementMsg) refers to ap_lab6.o(i.SetFCS) for SetFCS
     ap_lab6.o(i.Lab6_AddCharacteristic) refers to ap_lab6.o(i.BuildAddCharValueMsg) for BuildAddCharValueMsg
     ap_lab6.o(i.Lab6_AddCharacteristic) refers to uart0.o(i.UART0_OutString) for UART0_OutString
     ap_lab6.o(i.Lab6_AddCharacteristic) refers to ap.o(i.AP_SendMessageResponse) for AP_SendMessageResponse
@@ -957,197 +963,197 @@ Image Symbol Table
     i.Bluetooth_Steps                        0x00002148   Section        0  lab6.o(i.Bluetooth_Steps)
     i.Bluetooth_WritePlotState               0x00002164   Section        0  lab6.o(i.Bluetooth_WritePlotState)
     i.BuildAddCharDescriptorMsg              0x000021ac   Section        0  ap_lab6.o(i.BuildAddCharDescriptorMsg)
-    i.BuildAddCharValueMsg                   0x000021ae   Section        0  ap_lab6.o(i.BuildAddCharValueMsg)
-    i.BuildAddNotifyCharDescriptorMsg        0x000021b0   Section        0  ap_lab6.o(i.BuildAddNotifyCharDescriptorMsg)
-    i.BuildAddServiceMsg                     0x000021b2   Section        0  ap_lab6.o(i.BuildAddServiceMsg)
-    i.BuildGetStatusMsg                      0x000021de   Section        0  ap_lab6.o(i.BuildGetStatusMsg)
-    i.BuildGetVersionMsg                     0x000021fc   Section        0  ap_lab6.o(i.BuildGetVersionMsg)
-    i.BuildRegisterServiceMsg                0x0000221a   Section        0  ap_lab6.o(i.BuildRegisterServiceMsg)
-    i.BuildSetAdvertisementData1Msg          0x00002238   Section        0  ap_lab6.o(i.BuildSetAdvertisementData1Msg)
-    i.BuildSetAdvertisementDataMsg           0x00002280   Section        0  ap_lab6.o(i.BuildSetAdvertisementDataMsg)
-    i.BuildSetDeviceNameMsg                  0x00002320   Section        0  ap_lab6.o(i.BuildSetDeviceNameMsg)
-    i.BuildStartAdvertisementMsg             0x00002368   Section        0  ap_lab6.o(i.BuildStartAdvertisementMsg)
-    i.Clock_Delay1ms                         0x0000236a   Section        0  cortexm.o(i.Clock_Delay1ms)
-    i.Encrypt                                0x00002380   Section        0  texas.o(i.Encrypt)
-    Encrypt                                  0x00002381   Thumb Code    86  texas.o(i.Encrypt)
-    i.GPIO_Init                              0x000023e8   Section        0  gpio.o(i.GPIO_Init)
-    i.GetStringSize                          0x00002524   Section        0  ap_lab6.o(i.GetStringSize)
-    i.I2C_Recv2                              0x00002538   Section        0  bsp.o(i.I2C_Recv2)
-    I2C_Recv2                                0x00002539   Thumb Code   116  bsp.o(i.I2C_Recv2)
-    i.I2C_Send1                              0x000025b0   Section        0  bsp.o(i.I2C_Send1)
-    I2C_Send1                                0x000025b1   Thumb Code    68  bsp.o(i.I2C_Send1)
-    i.I2C_Send3                              0x000025f8   Section        0  bsp.o(i.I2C_Send3)
-    I2C_Send3                                0x000025f9   Thumb Code   170  bsp.o(i.I2C_Send3)
-    i.Lab6BuildAddCharDescriptorMsgSolution  0x000026a8   Section        0  texas.o(i.Lab6BuildAddCharDescriptorMsgSolution)
-    Lab6BuildAddCharDescriptorMsgSolution    0x000026a9   Thumb Code    88  texas.o(i.Lab6BuildAddCharDescriptorMsgSolution)
-    i.Lab6BuildAddCharValueMsgSolution       0x00002700   Section        0  texas.o(i.Lab6BuildAddCharValueMsgSolution)
-    Lab6BuildAddCharValueMsgSolution         0x00002701   Thumb Code    64  texas.o(i.Lab6BuildAddCharValueMsgSolution)
-    i.Lab6BuildAddNotifyCharDescriptorMsgSolution 0x00002740   Section        0  texas.o(i.Lab6BuildAddNotifyCharDescriptorMsgSolution)
-    Lab6BuildAddNotifyCharDescriptorMsgSolution 0x00002741   Thumb Code    92  texas.o(i.Lab6BuildAddNotifyCharDescriptorMsgSolution)
-    i.Lab6BuildAddServiceMsgSolution         0x0000279c   Section        0  texas.o(i.Lab6BuildAddServiceMsgSolution)
-    Lab6BuildAddServiceMsgSolution           0x0000279d   Thumb Code    44  texas.o(i.Lab6BuildAddServiceMsgSolution)
-    i.Lab6BuildGetStatusMsgSolution          0x000027c8   Section        0  texas.o(i.Lab6BuildGetStatusMsgSolution)
-    Lab6BuildGetStatusMsgSolution            0x000027c9   Thumb Code    30  texas.o(i.Lab6BuildGetStatusMsgSolution)
-    i.Lab6BuildGetVersionMsgSolution         0x000027e6   Section        0  texas.o(i.Lab6BuildGetVersionMsgSolution)
-    Lab6BuildGetVersionMsgSolution           0x000027e7   Thumb Code    30  texas.o(i.Lab6BuildGetVersionMsgSolution)
-    i.Lab6BuildRegisterServiceMsgSolution    0x00002804   Section        0  texas.o(i.Lab6BuildRegisterServiceMsgSolution)
-    Lab6BuildRegisterServiceMsgSolution      0x00002805   Thumb Code    30  texas.o(i.Lab6BuildRegisterServiceMsgSolution)
-    i.Lab6BuildSetAdvertisementData1MsgSolution 0x00002822   Section        0  texas.o(i.Lab6BuildSetAdvertisementData1MsgSolution)
-    Lab6BuildSetAdvertisementData1MsgSolution 0x00002823   Thumb Code    72  texas.o(i.Lab6BuildSetAdvertisementData1MsgSolution)
-    i.Lab6BuildSetAdvertisementDataMsgSolution 0x0000286a   Section        0  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolution)
-    Lab6BuildSetAdvertisementDataMsgSolution 0x0000286b   Thumb Code   126  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolution)
-    i.Lab6BuildSetAdvertisementDataMsgSolutionold 0x000028e8   Section        0  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolutionold)
-    Lab6BuildSetAdvertisementDataMsgSolutionold 0x000028e9   Thumb Code   126  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolutionold)
-    i.Lab6BuildSetDeviceNameMsgSolution      0x00002966   Section        0  texas.o(i.Lab6BuildSetDeviceNameMsgSolution)
-    Lab6BuildSetDeviceNameMsgSolution        0x00002967   Thumb Code    68  texas.o(i.Lab6BuildSetDeviceNameMsgSolution)
-    i.Lab6BuildStartAdvertisementMsgSolution 0x000029aa   Section        0  texas.o(i.Lab6BuildStartAdvertisementMsgSolution)
-    Lab6BuildStartAdvertisementMsgSolution   0x000029ab   Thumb Code    76  texas.o(i.Lab6BuildStartAdvertisementMsgSolution)
-    i.Lab6GradeAddCharDescriptorMsg          0x000029f8   Section        0  texas.o(i.Lab6GradeAddCharDescriptorMsg)
-    Lab6GradeAddCharDescriptorMsg            0x000029f9   Thumb Code    78  texas.o(i.Lab6GradeAddCharDescriptorMsg)
-    i.Lab6GradeAddCharValueMsg               0x00002a80   Section        0  texas.o(i.Lab6GradeAddCharValueMsg)
-    Lab6GradeAddCharValueMsg                 0x00002a81   Thumb Code   104  texas.o(i.Lab6GradeAddCharValueMsg)
-    i.Lab6GradeAddNotifyCharDescriptorMsg    0x00002b0c   Section        0  texas.o(i.Lab6GradeAddNotifyCharDescriptorMsg)
-    Lab6GradeAddNotifyCharDescriptorMsg      0x00002b0d   Thumb Code    78  texas.o(i.Lab6GradeAddNotifyCharDescriptorMsg)
-    i.Lab6GradeAddServiceMsg                 0x00002b98   Section        0  texas.o(i.Lab6GradeAddServiceMsg)
-    Lab6GradeAddServiceMsg                   0x00002b99   Thumb Code   106  texas.o(i.Lab6GradeAddServiceMsg)
-    i.Lab6GradeGetStatusMsg                  0x00002c28   Section        0  texas.o(i.Lab6GradeGetStatusMsg)
-    Lab6GradeGetStatusMsg                    0x00002c29   Thumb Code    44  texas.o(i.Lab6GradeGetStatusMsg)
-    i.Lab6GradeGetVersionMsg                 0x00002c78   Section        0  texas.o(i.Lab6GradeGetVersionMsg)
-    Lab6GradeGetVersionMsg                   0x00002c79   Thumb Code    44  texas.o(i.Lab6GradeGetVersionMsg)
-    i.Lab6GradeRegisterServiceMsg            0x00002cc8   Section        0  texas.o(i.Lab6GradeRegisterServiceMsg)
-    Lab6GradeRegisterServiceMsg              0x00002cc9   Thumb Code    44  texas.o(i.Lab6GradeRegisterServiceMsg)
-    i.Lab6GradeSetAdvertisementData1Msg      0x00002d1c   Section        0  texas.o(i.Lab6GradeSetAdvertisementData1Msg)
-    Lab6GradeSetAdvertisementData1Msg        0x00002d1d   Thumb Code    44  texas.o(i.Lab6GradeSetAdvertisementData1Msg)
-    i.Lab6GradeSetAdvertisementDataMsg       0x00002d78   Section        0  texas.o(i.Lab6GradeSetAdvertisementDataMsg)
-    Lab6GradeSetAdvertisementDataMsg         0x00002d79   Thumb Code    82  texas.o(i.Lab6GradeSetAdvertisementDataMsg)
-    i.Lab6GradeSetAdvertisementDataMsgold    0x00002e0c   Section        0  texas.o(i.Lab6GradeSetAdvertisementDataMsgold)
-    Lab6GradeSetAdvertisementDataMsgold      0x00002e0d   Thumb Code    78  texas.o(i.Lab6GradeSetAdvertisementDataMsgold)
-    i.Lab6GradeSetDeviceNameMsg              0x00002eac   Section        0  texas.o(i.Lab6GradeSetDeviceNameMsg)
-    Lab6GradeSetDeviceNameMsg                0x00002ead   Thumb Code    78  texas.o(i.Lab6GradeSetDeviceNameMsg)
-    i.Lab6GradeStartAdvertisementMsg         0x00002f38   Section        0  texas.o(i.Lab6GradeStartAdvertisementMsg)
-    Lab6GradeStartAdvertisementMsg           0x00002f39   Thumb Code    66  texas.o(i.Lab6GradeStartAdvertisementMsg)
-    i.Lab6OutCheck                           0x00002fa8   Section        0  texas.o(i.Lab6OutCheck)
-    i.Lab6_AddCharacteristic                 0x00003044   Section        0  ap_lab6.o(i.Lab6_AddCharacteristic)
-    i.Lab6_AddNotifyCharacteristic           0x00003164   Section        0  ap_lab6.o(i.Lab6_AddNotifyCharacteristic)
-    i.Lab6_AddService                        0x000032b4   Section        0  ap_lab6.o(i.Lab6_AddService)
-    i.Lab6_GetStatus                         0x000032f0   Section        0  ap_lab6.o(i.Lab6_GetStatus)
-    i.Lab6_GetVersion                        0x00003344   Section        0  ap_lab6.o(i.Lab6_GetVersion)
-    i.Lab6_RegisterService                   0x00003388   Section        0  ap_lab6.o(i.Lab6_RegisterService)
-    i.Lab6_StartAdvertisement                0x000033c4   Section        0  ap_lab6.o(i.Lab6_StartAdvertisement)
-    i.LogicAnalyzer                          0x000034ac   Section        0  texas.o(i.LogicAnalyzer)
-    i.NextRandom                             0x000034c0   Section        0  texas.o(i.NextRandom)
-    NextRandom                               0x000034c1   Thumb Code    24  texas.o(i.NextRandom)
-    i.OS_AddPeriodicEventThread              0x000034e4   Section        0  os.o(i.OS_AddPeriodicEventThread)
-    i.OS_AddThreads                          0x0000352c   Section        0  os.o(i.OS_AddThreads)
-    i.OS_FIFO_Get                            0x000035dc   Section        0  os.o(i.OS_FIFO_Get)
-    i.OS_FIFO_Init                           0x00003614   Section        0  os.o(i.OS_FIFO_Init)
-    i.OS_FIFO_Put                            0x00003638   Section        0  os.o(i.OS_FIFO_Put)
-    i.OS_Init                                0x0000368c   Section        0  os.o(i.OS_Init)
-    i.OS_InitSemaphore                       0x000036b8   Section        0  os.o(i.OS_InitSemaphore)
-    i.OS_Launch                              0x000036bc   Section        0  os.o(i.OS_Launch)
-    i.OS_Signal                              0x000036f0   Section        0  os.o(i.OS_Signal)
-    i.OS_Sleep                               0x00003724   Section        0  os.o(i.OS_Sleep)
-    i.OS_Suspend                             0x00003738   Section        0  os.o(i.OS_Suspend)
-    i.OS_Wait                                0x00003750   Section        0  os.o(i.OS_Wait)
-    i.OutValue                               0x0000377c   Section        0  lab6.o(i.OutValue)
-    i.PeriodicTask2_Init                     0x00003790   Section        0  texas.o(i.PeriodicTask2_Init)
-    i.Profile_Init                           0x0000384c   Section        0  profile.o(i.Profile_Init)
-    i.RxFifo_Get                             0x00003a20   Section        0  uart1.o(i.RxFifo_Get)
-    i.RxFifo_Init                            0x00003a58   Section        0  uart1.o(i.RxFifo_Init)
-    i.RxFifo_Put                             0x00003a74   Section        0  uart1.o(i.RxFifo_Put)
-    i.ST7735_InitR                           0x00003abc   Section        0  bsp.o(i.ST7735_InitR)
-    ST7735_InitR                             0x00003abd   Thumb Code    86  bsp.o(i.ST7735_InitR)
-    i.Scheduler                              0x00003b30   Section        0  os.o(i.Scheduler)
-    i.SetFCS                                 0x00003b60   Section        0  ap_lab6.o(i.SetFCS)
-    i.SetFCSSolution                         0x00003b90   Section        0  texas.o(i.SetFCSSolution)
-    SetFCSSolution                           0x00003b91   Thumb Code    38  texas.o(i.SetFCSSolution)
-    i.SetGrade                               0x00003bb8   Section        0  texas.o(i.SetGrade)
-    SetGrade                                 0x00003bb9   Thumb Code   196  texas.o(i.SetGrade)
-    i.SetInitialStack                        0x00003c84   Section        0  os.o(i.SetInitialStack)
-    i.TExaS_Grade                            0x00003dd4   Section        0  texas.o(i.TExaS_Grade)
-    i.TExaS_Init                             0x00003e7c   Section        0  texas.o(i.TExaS_Init)
-    i.TExaS_Task0                            0x00004010   Section        0  texas.o(i.TExaS_Task0)
-    i.TExaS_Task1                            0x00004050   Section        0  texas.o(i.TExaS_Task1)
-    i.TExaS_Task2                            0x00004090   Section        0  texas.o(i.TExaS_Task2)
-    i.TExaS_Task3                            0x000040d0   Section        0  texas.o(i.TExaS_Task3)
-    i.TExaS_Task4                            0x00004110   Section        0  texas.o(i.TExaS_Task4)
-    i.TExaS_Task5                            0x00004150   Section        0  texas.o(i.TExaS_Task5)
-    i.TExaS_Task6                            0x00004190   Section        0  texas.o(i.TExaS_Task6)
-    i.TIMER5A_Handler                        0x000041d0   Section        0  texas.o(i.TIMER5A_Handler)
-    i.Task0                                  0x000041e8   Section        0  lab6.o(i.Task0)
-    i.Task0_Init                             0x00004274   Section        0  lab6.o(i.Task0_Init)
-    i.Task1                                  0x00004288   Section        0  lab6.o(i.Task1)
-    i.Task1_Init                             0x000042fc   Section        0  lab6.o(i.Task1_Init)
-    i.Task2                                  0x00004364   Section        0  lab6.o(i.Task2)
-    i.Task3                                  0x00004528   Section        0  lab6.o(i.Task3)
-    i.Task4                                  0x00004670   Section        0  lab6.o(i.Task4)
-    i.Task5                                  0x000046d8   Section        0  lab6.o(i.Task5)
-    i.Task6                                  0x00004858   Section        0  lab6.o(i.Task6)
-    i.Task7                                  0x000048ac   Section        0  lab6.o(i.Task7)
-    i.UART0_Init                             0x000048e4   Section        0  uart0.o(i.UART0_Init)
-    i.UART0_OutChar                          0x00004980   Section        0  uart0.o(i.UART0_OutChar)
-    i.UART0_OutString                        0x00004998   Section        0  uart0.o(i.UART0_OutString)
-    i.UART0_OutUDec                          0x000049b0   Section        0  uart0.o(i.UART0_OutUDec)
-    i.UART0_OutUHex                          0x000049da   Section        0  uart0.o(i.UART0_OutUHex)
-    i.UART0_OutUHex2                         0x00004a0e   Section        0  uart0.o(i.UART0_OutUHex2)
-    i.UART1_FinishOutput                     0x00004a24   Section        0  uart1.o(i.UART1_FinishOutput)
-    i.UART1_Handler                          0x00004a48   Section        0  uart1.o(i.UART1_Handler)
-    i.UART1_InChar                           0x00004a78   Section        0  uart1.o(i.UART1_InChar)
-    i.UART1_InStatus                         0x00004a8c   Section        0  uart1.o(i.UART1_InStatus)
-    i.UART1_Init                             0x00004aa4   Section        0  uart1.o(i.UART1_Init)
-    i.UART1_OutChar                          0x00004b70   Section        0  uart1.o(i.UART1_OutChar)
-    i.WideTimer3A_Handler                    0x00004b88   Section        0  bsp.o(i.WideTimer3A_Handler)
-    i.WideTimer4A_Handler                    0x00004ba0   Section        0  bsp.o(i.WideTimer4A_Handler)
-    i.WideTimer5A_Handler                    0x00004bb8   Section        0  bsp.o(i.WideTimer5A_Handler)
-    i.adcinit                                0x00004bd0   Section        0  bsp.o(i.adcinit)
-    adcinit                                  0x00004bd1   Thumb Code    58  bsp.o(i.adcinit)
-    i.commandList                            0x00004c1c   Section        0  bsp.o(i.commandList)
-    commandList                              0x00004c1d   Thumb Code    86  bsp.o(i.commandList)
-    i.commonInit                             0x00004c74   Section        0  bsp.o(i.commonInit)
-    commonInit                               0x00004c75   Thumb Code   452  bsp.o(i.commonInit)
-    i.copyHardwareToSoftware                 0x00004e78   Section        0  uart1.o(i.copyHardwareToSoftware)
-    copyHardwareToSoftware                   0x00004e79   Thumb Code    36  uart1.o(i.copyHardwareToSoftware)
-    i.drawaxes                               0x00004ea0   Section        0  lab6.o(i.drawaxes)
-    i.fillmessage                            0x00004fb4   Section        0  bsp.o(i.fillmessage)
-    fillmessage                              0x00004fb5   Thumb Code    64  bsp.o(i.fillmessage)
-    i.fillmessage2_1                         0x00004ffc   Section        0  bsp.o(i.fillmessage2_1)
-    fillmessage2_1                           0x00004ffd   Thumb Code    90  bsp.o(i.fillmessage2_1)
-    i.fillmessage4                           0x0000505c   Section        0  bsp.o(i.fillmessage4)
-    fillmessage4                             0x0000505d   Thumb Code    90  bsp.o(i.fillmessage4)
-    i.i2cinit                                0x000050c0   Section        0  bsp.o(i.i2cinit)
-    i2cinit                                  0x000050c1   Thumb Code   126  bsp.o(i.i2cinit)
-    i.lightsensorend                         0x00005154   Section        0  bsp.o(i.lightsensorend)
-    lightsensorend                           0x00005155   Thumb Code    80  bsp.o(i.lightsensorend)
-    i.lightsensorstart                       0x000051a4   Section        0  bsp.o(i.lightsensorstart)
-    lightsensorstart                         0x000051a5   Thumb Code    36  bsp.o(i.lightsensorstart)
-    i.main                                   0x000051c8   Section        0  lab6.o(i.main)
-    i.outnibble                              0x000052cc   Section        0  uart0.o(i.outnibble)
-    i.pushColor                              0x000052ec   Section        0  bsp.o(i.pushColor)
-    pushColor                                0x000052ed   Thumb Code    18  bsp.o(i.pushColor)
-    i.runperiodicevents                      0x00005300   Section        0  os.o(i.runperiodicevents)
-    runperiodicevents                        0x00005301   Thumb Code    88  os.o(i.runperiodicevents)
-    i.runsleep                               0x0000535c   Section        0  os.o(i.runsleep)
-    runsleep                                 0x0000535d   Thumb Code    40  os.o(i.runsleep)
-    i.setAddrWindow                          0x00005388   Section        0  bsp.o(i.setAddrWindow)
-    setAddrWindow                            0x00005389   Thumb Code   106  bsp.o(i.setAddrWindow)
-    i.sqrt32                                 0x000053fc   Section        0  lab6.o(i.sqrt32)
-    i.tempsensorend                          0x0000541a   Section        0  bsp.o(i.tempsensorend)
-    tempsensorend                            0x0000541b   Thumb Code    68  bsp.o(i.tempsensorend)
-    i.tempsensorstart                        0x0000545e   Section        0  bsp.o(i.tempsensorstart)
-    tempsensorstart                          0x0000545f   Thumb Code    18  bsp.o(i.tempsensorstart)
-    i.writecommand                           0x00005470   Section        0  bsp.o(i.writecommand)
-    writecommand                             0x00005471   Thumb Code    62  bsp.o(i.writecommand)
-    i.writedata                              0x000054b8   Section        0  bsp.o(i.writedata)
-    writedata                                0x000054b9   Thumb Code    64  bsp.o(i.writedata)
-    .constdata                               0x00005500   Section     1403  bsp.o(.constdata)
-    Font                                     0x00005500   Data        1275  bsp.o(.constdata)
-    Rcmd1                                    0x000059fb   Data          59  bsp.o(.constdata)
-    Rcmd2green                               0x00005a36   Data          13  bsp.o(.constdata)
-    Rcmd2red                                 0x00005a43   Data          13  bsp.o(.constdata)
-    Rcmd3                                    0x00005a50   Data          43  bsp.o(.constdata)
-    .constdata                               0x00005a7c   Section      116  ap.o(.constdata)
-    .constdata                               0x00005af0   Section       72  texas.o(.constdata)
-    .conststring                             0x00005b38   Section      102  texas.o(.conststring)
+    i.BuildAddCharValueMsg                   0x00002216   Section        0  ap_lab6.o(i.BuildAddCharValueMsg)
+    i.BuildAddNotifyCharDescriptorMsg        0x00002256   Section        0  ap_lab6.o(i.BuildAddNotifyCharDescriptorMsg)
+    i.BuildAddServiceMsg                     0x000022c4   Section        0  ap_lab6.o(i.BuildAddServiceMsg)
+    i.BuildGetStatusMsg                      0x000022f0   Section        0  ap_lab6.o(i.BuildGetStatusMsg)
+    i.BuildGetVersionMsg                     0x0000230e   Section        0  ap_lab6.o(i.BuildGetVersionMsg)
+    i.BuildRegisterServiceMsg                0x0000232c   Section        0  ap_lab6.o(i.BuildRegisterServiceMsg)
+    i.BuildSetAdvertisementData1Msg          0x0000234a   Section        0  ap_lab6.o(i.BuildSetAdvertisementData1Msg)
+    i.BuildSetAdvertisementDataMsg           0x00002392   Section        0  ap_lab6.o(i.BuildSetAdvertisementDataMsg)
+    i.BuildSetDeviceNameMsg                  0x00002432   Section        0  ap_lab6.o(i.BuildSetDeviceNameMsg)
+    i.BuildStartAdvertisementMsg             0x0000247a   Section        0  ap_lab6.o(i.BuildStartAdvertisementMsg)
+    i.Clock_Delay1ms                         0x000024c6   Section        0  cortexm.o(i.Clock_Delay1ms)
+    i.Encrypt                                0x000024dc   Section        0  texas.o(i.Encrypt)
+    Encrypt                                  0x000024dd   Thumb Code    86  texas.o(i.Encrypt)
+    i.GPIO_Init                              0x00002544   Section        0  gpio.o(i.GPIO_Init)
+    i.GetStringSize                          0x00002680   Section        0  ap_lab6.o(i.GetStringSize)
+    i.I2C_Recv2                              0x00002694   Section        0  bsp.o(i.I2C_Recv2)
+    I2C_Recv2                                0x00002695   Thumb Code   116  bsp.o(i.I2C_Recv2)
+    i.I2C_Send1                              0x0000270c   Section        0  bsp.o(i.I2C_Send1)
+    I2C_Send1                                0x0000270d   Thumb Code    68  bsp.o(i.I2C_Send1)
+    i.I2C_Send3                              0x00002754   Section        0  bsp.o(i.I2C_Send3)
+    I2C_Send3                                0x00002755   Thumb Code   170  bsp.o(i.I2C_Send3)
+    i.Lab6BuildAddCharDescriptorMsgSolution  0x00002804   Section        0  texas.o(i.Lab6BuildAddCharDescriptorMsgSolution)
+    Lab6BuildAddCharDescriptorMsgSolution    0x00002805   Thumb Code    88  texas.o(i.Lab6BuildAddCharDescriptorMsgSolution)
+    i.Lab6BuildAddCharValueMsgSolution       0x0000285c   Section        0  texas.o(i.Lab6BuildAddCharValueMsgSolution)
+    Lab6BuildAddCharValueMsgSolution         0x0000285d   Thumb Code    64  texas.o(i.Lab6BuildAddCharValueMsgSolution)
+    i.Lab6BuildAddNotifyCharDescriptorMsgSolution 0x0000289c   Section        0  texas.o(i.Lab6BuildAddNotifyCharDescriptorMsgSolution)
+    Lab6BuildAddNotifyCharDescriptorMsgSolution 0x0000289d   Thumb Code    92  texas.o(i.Lab6BuildAddNotifyCharDescriptorMsgSolution)
+    i.Lab6BuildAddServiceMsgSolution         0x000028f8   Section        0  texas.o(i.Lab6BuildAddServiceMsgSolution)
+    Lab6BuildAddServiceMsgSolution           0x000028f9   Thumb Code    44  texas.o(i.Lab6BuildAddServiceMsgSolution)
+    i.Lab6BuildGetStatusMsgSolution          0x00002924   Section        0  texas.o(i.Lab6BuildGetStatusMsgSolution)
+    Lab6BuildGetStatusMsgSolution            0x00002925   Thumb Code    30  texas.o(i.Lab6BuildGetStatusMsgSolution)
+    i.Lab6BuildGetVersionMsgSolution         0x00002942   Section        0  texas.o(i.Lab6BuildGetVersionMsgSolution)
+    Lab6BuildGetVersionMsgSolution           0x00002943   Thumb Code    30  texas.o(i.Lab6BuildGetVersionMsgSolution)
+    i.Lab6BuildRegisterServiceMsgSolution    0x00002960   Section        0  texas.o(i.Lab6BuildRegisterServiceMsgSolution)
+    Lab6BuildRegisterServiceMsgSolution      0x00002961   Thumb Code    30  texas.o(i.Lab6BuildRegisterServiceMsgSolution)
+    i.Lab6BuildSetAdvertisementData1MsgSolution 0x0000297e   Section        0  texas.o(i.Lab6BuildSetAdvertisementData1MsgSolution)
+    Lab6BuildSetAdvertisementData1MsgSolution 0x0000297f   Thumb Code    72  texas.o(i.Lab6BuildSetAdvertisementData1MsgSolution)
+    i.Lab6BuildSetAdvertisementDataMsgSolution 0x000029c6   Section        0  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolution)
+    Lab6BuildSetAdvertisementDataMsgSolution 0x000029c7   Thumb Code   126  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolution)
+    i.Lab6BuildSetAdvertisementDataMsgSolutionold 0x00002a44   Section        0  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolutionold)
+    Lab6BuildSetAdvertisementDataMsgSolutionold 0x00002a45   Thumb Code   126  texas.o(i.Lab6BuildSetAdvertisementDataMsgSolutionold)
+    i.Lab6BuildSetDeviceNameMsgSolution      0x00002ac2   Section        0  texas.o(i.Lab6BuildSetDeviceNameMsgSolution)
+    Lab6BuildSetDeviceNameMsgSolution        0x00002ac3   Thumb Code    68  texas.o(i.Lab6BuildSetDeviceNameMsgSolution)
+    i.Lab6BuildStartAdvertisementMsgSolution 0x00002b06   Section        0  texas.o(i.Lab6BuildStartAdvertisementMsgSolution)
+    Lab6BuildStartAdvertisementMsgSolution   0x00002b07   Thumb Code    76  texas.o(i.Lab6BuildStartAdvertisementMsgSolution)
+    i.Lab6GradeAddCharDescriptorMsg          0x00002b54   Section        0  texas.o(i.Lab6GradeAddCharDescriptorMsg)
+    Lab6GradeAddCharDescriptorMsg            0x00002b55   Thumb Code    78  texas.o(i.Lab6GradeAddCharDescriptorMsg)
+    i.Lab6GradeAddCharValueMsg               0x00002bdc   Section        0  texas.o(i.Lab6GradeAddCharValueMsg)
+    Lab6GradeAddCharValueMsg                 0x00002bdd   Thumb Code   104  texas.o(i.Lab6GradeAddCharValueMsg)
+    i.Lab6GradeAddNotifyCharDescriptorMsg    0x00002c68   Section        0  texas.o(i.Lab6GradeAddNotifyCharDescriptorMsg)
+    Lab6GradeAddNotifyCharDescriptorMsg      0x00002c69   Thumb Code    78  texas.o(i.Lab6GradeAddNotifyCharDescriptorMsg)
+    i.Lab6GradeAddServiceMsg                 0x00002cf4   Section        0  texas.o(i.Lab6GradeAddServiceMsg)
+    Lab6GradeAddServiceMsg                   0x00002cf5   Thumb Code   106  texas.o(i.Lab6GradeAddServiceMsg)
+    i.Lab6GradeGetStatusMsg                  0x00002d84   Section        0  texas.o(i.Lab6GradeGetStatusMsg)
+    Lab6GradeGetStatusMsg                    0x00002d85   Thumb Code    44  texas.o(i.Lab6GradeGetStatusMsg)
+    i.Lab6GradeGetVersionMsg                 0x00002dd4   Section        0  texas.o(i.Lab6GradeGetVersionMsg)
+    Lab6GradeGetVersionMsg                   0x00002dd5   Thumb Code    44  texas.o(i.Lab6GradeGetVersionMsg)
+    i.Lab6GradeRegisterServiceMsg            0x00002e24   Section        0  texas.o(i.Lab6GradeRegisterServiceMsg)
+    Lab6GradeRegisterServiceMsg              0x00002e25   Thumb Code    44  texas.o(i.Lab6GradeRegisterServiceMsg)
+    i.Lab6GradeSetAdvertisementData1Msg      0x00002e78   Section        0  texas.o(i.Lab6GradeSetAdvertisementData1Msg)
+    Lab6GradeSetAdvertisementData1Msg        0x00002e79   Thumb Code    44  texas.o(i.Lab6GradeSetAdvertisementData1Msg)
+    i.Lab6GradeSetAdvertisementDataMsg       0x00002ed4   Section        0  texas.o(i.Lab6GradeSetAdvertisementDataMsg)
+    Lab6GradeSetAdvertisementDataMsg         0x00002ed5   Thumb Code    82  texas.o(i.Lab6GradeSetAdvertisementDataMsg)
+    i.Lab6GradeSetAdvertisementDataMsgold    0x00002f68   Section        0  texas.o(i.Lab6GradeSetAdvertisementDataMsgold)
+    Lab6GradeSetAdvertisementDataMsgold      0x00002f69   Thumb Code    78  texas.o(i.Lab6GradeSetAdvertisementDataMsgold)
+    i.Lab6GradeSetDeviceNameMsg              0x00003008   Section        0  texas.o(i.Lab6GradeSetDeviceNameMsg)
+    Lab6GradeSetDeviceNameMsg                0x00003009   Thumb Code    78  texas.o(i.Lab6GradeSetDeviceNameMsg)
+    i.Lab6GradeStartAdvertisementMsg         0x00003094   Section        0  texas.o(i.Lab6GradeStartAdvertisementMsg)
+    Lab6GradeStartAdvertisementMsg           0x00003095   Thumb Code    66  texas.o(i.Lab6GradeStartAdvertisementMsg)
+    i.Lab6OutCheck                           0x00003104   Section        0  texas.o(i.Lab6OutCheck)
+    i.Lab6_AddCharacteristic                 0x000031a0   Section        0  ap_lab6.o(i.Lab6_AddCharacteristic)
+    i.Lab6_AddNotifyCharacteristic           0x000032c0   Section        0  ap_lab6.o(i.Lab6_AddNotifyCharacteristic)
+    i.Lab6_AddService                        0x00003410   Section        0  ap_lab6.o(i.Lab6_AddService)
+    i.Lab6_GetStatus                         0x0000344c   Section        0  ap_lab6.o(i.Lab6_GetStatus)
+    i.Lab6_GetVersion                        0x000034a0   Section        0  ap_lab6.o(i.Lab6_GetVersion)
+    i.Lab6_RegisterService                   0x000034e4   Section        0  ap_lab6.o(i.Lab6_RegisterService)
+    i.Lab6_StartAdvertisement                0x00003520   Section        0  ap_lab6.o(i.Lab6_StartAdvertisement)
+    i.LogicAnalyzer                          0x00003608   Section        0  texas.o(i.LogicAnalyzer)
+    i.NextRandom                             0x0000361c   Section        0  texas.o(i.NextRandom)
+    NextRandom                               0x0000361d   Thumb Code    24  texas.o(i.NextRandom)
+    i.OS_AddPeriodicEventThread              0x00003640   Section        0  os.o(i.OS_AddPeriodicEventThread)
+    i.OS_AddThreads                          0x00003688   Section        0  os.o(i.OS_AddThreads)
+    i.OS_FIFO_Get                            0x00003738   Section        0  os.o(i.OS_FIFO_Get)
+    i.OS_FIFO_Init                           0x00003770   Section        0  os.o(i.OS_FIFO_Init)
+    i.OS_FIFO_Put                            0x00003794   Section        0  os.o(i.OS_FIFO_Put)
+    i.OS_Init                                0x000037e8   Section        0  os.o(i.OS_Init)
+    i.OS_InitSemaphore                       0x00003814   Section        0  os.o(i.OS_InitSemaphore)
+    i.OS_Launch                              0x00003818   Section        0  os.o(i.OS_Launch)
+    i.OS_Signal                              0x0000384c   Section        0  os.o(i.OS_Signal)
+    i.OS_Sleep                               0x00003880   Section        0  os.o(i.OS_Sleep)
+    i.OS_Suspend                             0x00003894   Section        0  os.o(i.OS_Suspend)
+    i.OS_Wait                                0x000038ac   Section        0  os.o(i.OS_Wait)
+    i.OutValue                               0x000038d8   Section        0  lab6.o(i.OutValue)
+    i.PeriodicTask2_Init                     0x000038ec   Section        0  texas.o(i.PeriodicTask2_Init)
+    i.Profile_Init                           0x000039a8   Section        0  profile.o(i.Profile_Init)
+    i.RxFifo_Get                             0x00003b7c   Section        0  uart1.o(i.RxFifo_Get)
+    i.RxFifo_Init                            0x00003bb4   Section        0  uart1.o(i.RxFifo_Init)
+    i.RxFifo_Put                             0x00003bd0   Section        0  uart1.o(i.RxFifo_Put)
+    i.ST7735_InitR                           0x00003c18   Section        0  bsp.o(i.ST7735_InitR)
+    ST7735_InitR                             0x00003c19   Thumb Code    86  bsp.o(i.ST7735_InitR)
+    i.Scheduler                              0x00003c8c   Section        0  os.o(i.Scheduler)
+    i.SetFCS                                 0x00003cbc   Section        0  ap_lab6.o(i.SetFCS)
+    i.SetFCSSolution                         0x00003cec   Section        0  texas.o(i.SetFCSSolution)
+    SetFCSSolution                           0x00003ced   Thumb Code    38  texas.o(i.SetFCSSolution)
+    i.SetGrade                               0x00003d14   Section        0  texas.o(i.SetGrade)
+    SetGrade                                 0x00003d15   Thumb Code   196  texas.o(i.SetGrade)
+    i.SetInitialStack                        0x00003de0   Section        0  os.o(i.SetInitialStack)
+    i.TExaS_Grade                            0x00003f30   Section        0  texas.o(i.TExaS_Grade)
+    i.TExaS_Init                             0x00003fd8   Section        0  texas.o(i.TExaS_Init)
+    i.TExaS_Task0                            0x0000416c   Section        0  texas.o(i.TExaS_Task0)
+    i.TExaS_Task1                            0x000041ac   Section        0  texas.o(i.TExaS_Task1)
+    i.TExaS_Task2                            0x000041ec   Section        0  texas.o(i.TExaS_Task2)
+    i.TExaS_Task3                            0x0000422c   Section        0  texas.o(i.TExaS_Task3)
+    i.TExaS_Task4                            0x0000426c   Section        0  texas.o(i.TExaS_Task4)
+    i.TExaS_Task5                            0x000042ac   Section        0  texas.o(i.TExaS_Task5)
+    i.TExaS_Task6                            0x000042ec   Section        0  texas.o(i.TExaS_Task6)
+    i.TIMER5A_Handler                        0x0000432c   Section        0  texas.o(i.TIMER5A_Handler)
+    i.Task0                                  0x00004344   Section        0  lab6.o(i.Task0)
+    i.Task0_Init                             0x000043d0   Section        0  lab6.o(i.Task0_Init)
+    i.Task1                                  0x000043e4   Section        0  lab6.o(i.Task1)
+    i.Task1_Init                             0x00004458   Section        0  lab6.o(i.Task1_Init)
+    i.Task2                                  0x000044c0   Section        0  lab6.o(i.Task2)
+    i.Task3                                  0x00004684   Section        0  lab6.o(i.Task3)
+    i.Task4                                  0x000047cc   Section        0  lab6.o(i.Task4)
+    i.Task5                                  0x00004834   Section        0  lab6.o(i.Task5)
+    i.Task6                                  0x000049b4   Section        0  lab6.o(i.Task6)
+    i.Task7                                  0x00004a08   Section        0  lab6.o(i.Task7)
+    i.UART0_Init                             0x00004a40   Section        0  uart0.o(i.UART0_Init)
+    i.UART0_OutChar                          0x00004adc   Section        0  uart0.o(i.UART0_OutChar)
+    i.UART0_OutString                        0x00004af4   Section        0  uart0.o(i.UART0_OutString)
+    i.UART0_OutUDec                          0x00004b0c   Section        0  uart0.o(i.UART0_OutUDec)
+    i.UART0_OutUHex                          0x00004b36   Section        0  uart0.o(i.UART0_OutUHex)
+    i.UART0_OutUHex2                         0x00004b6a   Section        0  uart0.o(i.UART0_OutUHex2)
+    i.UART1_FinishOutput                     0x00004b80   Section        0  uart1.o(i.UART1_FinishOutput)
+    i.UART1_Handler                          0x00004ba4   Section        0  uart1.o(i.UART1_Handler)
+    i.UART1_InChar                           0x00004bd4   Section        0  uart1.o(i.UART1_InChar)
+    i.UART1_InStatus                         0x00004be8   Section        0  uart1.o(i.UART1_InStatus)
+    i.UART1_Init                             0x00004c00   Section        0  uart1.o(i.UART1_Init)
+    i.UART1_OutChar                          0x00004ccc   Section        0  uart1.o(i.UART1_OutChar)
+    i.WideTimer3A_Handler                    0x00004ce4   Section        0  bsp.o(i.WideTimer3A_Handler)
+    i.WideTimer4A_Handler                    0x00004cfc   Section        0  bsp.o(i.WideTimer4A_Handler)
+    i.WideTimer5A_Handler                    0x00004d14   Section        0  bsp.o(i.WideTimer5A_Handler)
+    i.adcinit                                0x00004d2c   Section        0  bsp.o(i.adcinit)
+    adcinit                                  0x00004d2d   Thumb Code    58  bsp.o(i.adcinit)
+    i.commandList                            0x00004d78   Section        0  bsp.o(i.commandList)
+    commandList                              0x00004d79   Thumb Code    86  bsp.o(i.commandList)
+    i.commonInit                             0x00004dd0   Section        0  bsp.o(i.commonInit)
+    commonInit                               0x00004dd1   Thumb Code   452  bsp.o(i.commonInit)
+    i.copyHardwareToSoftware                 0x00004fd4   Section        0  uart1.o(i.copyHardwareToSoftware)
+    copyHardwareToSoftware                   0x00004fd5   Thumb Code    36  uart1.o(i.copyHardwareToSoftware)
+    i.drawaxes                               0x00004ffc   Section        0  lab6.o(i.drawaxes)
+    i.fillmessage                            0x00005110   Section        0  bsp.o(i.fillmessage)
+    fillmessage                              0x00005111   Thumb Code    64  bsp.o(i.fillmessage)
+    i.fillmessage2_1                         0x00005158   Section        0  bsp.o(i.fillmessage2_1)
+    fillmessage2_1                           0x00005159   Thumb Code    90  bsp.o(i.fillmessage2_1)
+    i.fillmessage4                           0x000051b8   Section        0  bsp.o(i.fillmessage4)
+    fillmessage4                             0x000051b9   Thumb Code    90  bsp.o(i.fillmessage4)
+    i.i2cinit                                0x0000521c   Section        0  bsp.o(i.i2cinit)
+    i2cinit                                  0x0000521d   Thumb Code   126  bsp.o(i.i2cinit)
+    i.lightsensorend                         0x000052b0   Section        0  bsp.o(i.lightsensorend)
+    lightsensorend                           0x000052b1   Thumb Code    80  bsp.o(i.lightsensorend)
+    i.lightsensorstart                       0x00005300   Section        0  bsp.o(i.lightsensorstart)
+    lightsensorstart                         0x00005301   Thumb Code    36  bsp.o(i.lightsensorstart)
+    i.main                                   0x00005324   Section        0  lab6.o(i.main)
+    i.outnibble                              0x00005428   Section        0  uart0.o(i.outnibble)
+    i.pushColor                              0x00005448   Section        0  bsp.o(i.pushColor)
+    pushColor                                0x00005449   Thumb Code    18  bsp.o(i.pushColor)
+    i.runperiodicevents                      0x0000545c   Section        0  os.o(i.runperiodicevents)
+    runperiodicevents                        0x0000545d   Thumb Code    88  os.o(i.runperiodicevents)
+    i.runsleep                               0x000054b8   Section        0  os.o(i.runsleep)
+    runsleep                                 0x000054b9   Thumb Code    40  os.o(i.runsleep)
+    i.setAddrWindow                          0x000054e4   Section        0  bsp.o(i.setAddrWindow)
+    setAddrWindow                            0x000054e5   Thumb Code   106  bsp.o(i.setAddrWindow)
+    i.sqrt32                                 0x00005558   Section        0  lab6.o(i.sqrt32)
+    i.tempsensorend                          0x00005576   Section        0  bsp.o(i.tempsensorend)
+    tempsensorend                            0x00005577   Thumb Code    68  bsp.o(i.tempsensorend)
+    i.tempsensorstart                        0x000055ba   Section        0  bsp.o(i.tempsensorstart)
+    tempsensorstart                          0x000055bb   Thumb Code    18  bsp.o(i.tempsensorstart)
+    i.writecommand                           0x000055cc   Section        0  bsp.o(i.writecommand)
+    writecommand                             0x000055cd   Thumb Code    62  bsp.o(i.writecommand)
+    i.writedata                              0x00005614   Section        0  bsp.o(i.writedata)
+    writedata                                0x00005615   Thumb Code    64  bsp.o(i.writedata)
+    .constdata                               0x0000565c   Section     1403  bsp.o(.constdata)
+    Font                                     0x0000565c   Data        1275  bsp.o(.constdata)
+    Rcmd1                                    0x00005b57   Data          59  bsp.o(.constdata)
+    Rcmd2green                               0x00005b92   Data          13  bsp.o(.constdata)
+    Rcmd2red                                 0x00005b9f   Data          13  bsp.o(.constdata)
+    Rcmd3                                    0x00005bac   Data          43  bsp.o(.constdata)
+    .constdata                               0x00005bd8   Section      116  ap.o(.constdata)
+    .constdata                               0x00005c4c   Section       72  texas.o(.constdata)
+    .conststring                             0x00005c94   Section      102  texas.o(.conststring)
     .data                                    0x20000000   Section       68  bsp.o(.data)
     ClockFrequency                           0x20000000   Data           4  bsp.o(.data)
     PWMCycles                                0x20000004   Data           2  bsp.o(.data)
@@ -1464,104 +1470,104 @@ Image Symbol Table
     Bluetooth_ReadTime                       0x00002125   Thumb Code    14  lab6.o(i.Bluetooth_ReadTime)
     Bluetooth_Steps                          0x00002149   Thumb Code    20  lab6.o(i.Bluetooth_Steps)
     Bluetooth_WritePlotState                 0x00002165   Thumb Code    42  lab6.o(i.Bluetooth_WritePlotState)
-    BuildAddCharDescriptorMsg                0x000021ad   Thumb Code     2  ap_lab6.o(i.BuildAddCharDescriptorMsg)
-    BuildAddCharValueMsg                     0x000021af   Thumb Code     2  ap_lab6.o(i.BuildAddCharValueMsg)
-    BuildAddNotifyCharDescriptorMsg          0x000021b1   Thumb Code     2  ap_lab6.o(i.BuildAddNotifyCharDescriptorMsg)
-    BuildAddServiceMsg                       0x000021b3   Thumb Code    44  ap_lab6.o(i.BuildAddServiceMsg)
-    BuildGetStatusMsg                        0x000021df   Thumb Code    30  ap_lab6.o(i.BuildGetStatusMsg)
-    BuildGetVersionMsg                       0x000021fd   Thumb Code    30  ap_lab6.o(i.BuildGetVersionMsg)
-    BuildRegisterServiceMsg                  0x0000221b   Thumb Code    30  ap_lab6.o(i.BuildRegisterServiceMsg)
-    BuildSetAdvertisementData1Msg            0x00002239   Thumb Code    72  ap_lab6.o(i.BuildSetAdvertisementData1Msg)
-    BuildSetAdvertisementDataMsg             0x00002281   Thumb Code   160  ap_lab6.o(i.BuildSetAdvertisementDataMsg)
-    BuildSetDeviceNameMsg                    0x00002321   Thumb Code    72  ap_lab6.o(i.BuildSetDeviceNameMsg)
-    BuildStartAdvertisementMsg               0x00002369   Thumb Code     2  ap_lab6.o(i.BuildStartAdvertisementMsg)
-    Clock_Delay1ms                           0x0000236b   Thumb Code    22  cortexm.o(i.Clock_Delay1ms)
-    GPIO_Init                                0x000023e9   Thumb Code   274  gpio.o(i.GPIO_Init)
-    GetStringSize                            0x00002525   Thumb Code    18  ap_lab6.o(i.GetStringSize)
-    Lab6OutCheck                             0x00002fa9   Thumb Code   122  texas.o(i.Lab6OutCheck)
-    Lab6_AddCharacteristic                   0x00003045   Thumb Code   228  ap_lab6.o(i.Lab6_AddCharacteristic)
-    Lab6_AddNotifyCharacteristic             0x00003165   Thumb Code   268  ap_lab6.o(i.Lab6_AddNotifyCharacteristic)
-    Lab6_AddService                          0x000032b5   Thumb Code    36  ap_lab6.o(i.Lab6_AddService)
-    Lab6_GetStatus                           0x000032f1   Thumb Code    58  ap_lab6.o(i.Lab6_GetStatus)
-    Lab6_GetVersion                          0x00003345   Thumb Code    42  ap_lab6.o(i.Lab6_GetVersion)
-    Lab6_RegisterService                     0x00003389   Thumb Code    32  ap_lab6.o(i.Lab6_RegisterService)
-    Lab6_StartAdvertisement                  0x000033c5   Thumb Code   120  ap_lab6.o(i.Lab6_StartAdvertisement)
-    LogicAnalyzer                            0x000034ad   Thumb Code    12  texas.o(i.LogicAnalyzer)
-    OS_AddPeriodicEventThread                0x000034e5   Thumb Code    64  os.o(i.OS_AddPeriodicEventThread)
-    OS_AddThreads                            0x0000352d   Thumb Code   164  os.o(i.OS_AddThreads)
-    OS_FIFO_Get                              0x000035dd   Thumb Code    42  os.o(i.OS_FIFO_Get)
-    OS_FIFO_Init                             0x00003615   Thumb Code    22  os.o(i.OS_FIFO_Init)
-    OS_FIFO_Put                              0x00003639   Thumb Code    68  os.o(i.OS_FIFO_Put)
-    OS_Init                                  0x0000368d   Thumb Code    36  os.o(i.OS_Init)
-    OS_InitSemaphore                         0x000036b9   Thumb Code     4  os.o(i.OS_InitSemaphore)
-    OS_Launch                                0x000036bd   Thumb Code    48  os.o(i.OS_Launch)
-    OS_Signal                                0x000036f1   Thumb Code    46  os.o(i.OS_Signal)
-    OS_Sleep                                 0x00003725   Thumb Code    16  os.o(i.OS_Sleep)
-    OS_Suspend                               0x00003739   Thumb Code    18  os.o(i.OS_Suspend)
-    OS_Wait                                  0x00003751   Thumb Code    40  os.o(i.OS_Wait)
-    OutValue                                 0x0000377d   Thumb Code    20  lab6.o(i.OutValue)
-    PeriodicTask2_Init                       0x00003791   Thumb Code   164  texas.o(i.PeriodicTask2_Init)
-    Profile_Init                             0x0000384d   Thumb Code   418  profile.o(i.Profile_Init)
-    RxFifo_Get                               0x00003a21   Thumb Code    44  uart1.o(i.RxFifo_Get)
-    RxFifo_Init                              0x00003a59   Thumb Code    16  uart1.o(i.RxFifo_Init)
-    RxFifo_Put                               0x00003a75   Thumb Code    56  uart1.o(i.RxFifo_Put)
-    Scheduler                                0x00003b31   Thumb Code    44  os.o(i.Scheduler)
-    SetFCS                                   0x00003b61   Thumb Code    48  ap_lab6.o(i.SetFCS)
-    SetInitialStack                          0x00003c85   Thumb Code   326  os.o(i.SetInitialStack)
-    TExaS_Grade                              0x00003dd5   Thumb Code   120  texas.o(i.TExaS_Grade)
-    TExaS_Init                               0x00003e7d   Thumb Code   308  texas.o(i.TExaS_Init)
-    TExaS_Task0                              0x00004011   Thumb Code    50  texas.o(i.TExaS_Task0)
-    TExaS_Task1                              0x00004051   Thumb Code    50  texas.o(i.TExaS_Task1)
-    TExaS_Task2                              0x00004091   Thumb Code    50  texas.o(i.TExaS_Task2)
-    TExaS_Task3                              0x000040d1   Thumb Code    50  texas.o(i.TExaS_Task3)
-    TExaS_Task4                              0x00004111   Thumb Code    50  texas.o(i.TExaS_Task4)
-    TExaS_Task5                              0x00004151   Thumb Code    50  texas.o(i.TExaS_Task5)
-    TExaS_Task6                              0x00004191   Thumb Code    50  texas.o(i.TExaS_Task6)
-    TIMER5A_Handler                          0x000041d1   Thumb Code    16  texas.o(i.TIMER5A_Handler)
-    Task0                                    0x000041e9   Thumb Code   110  lab6.o(i.Task0)
-    Task0_Init                               0x00004275   Thumb Code    14  lab6.o(i.Task0_Init)
-    Task1                                    0x00004289   Thumb Code    90  lab6.o(i.Task1)
-    Task1_Init                               0x000042fd   Thumb Code    74  lab6.o(i.Task1_Init)
-    Task2                                    0x00004365   Thumb Code   406  lab6.o(i.Task2)
-    Task3                                    0x00004529   Thumb Code   302  lab6.o(i.Task3)
-    Task4                                    0x00004671   Thumb Code    90  lab6.o(i.Task4)
-    Task5                                    0x000046d9   Thumb Code   304  lab6.o(i.Task5)
-    Task6                                    0x00004859   Thumb Code    74  lab6.o(i.Task6)
-    Task7                                    0x000048ad   Thumb Code    46  lab6.o(i.Task7)
-    UART0_Init                               0x000048e5   Thumb Code   136  uart0.o(i.UART0_Init)
-    UART0_OutChar                            0x00004981   Thumb Code    20  uart0.o(i.UART0_OutChar)
-    UART0_OutString                          0x00004999   Thumb Code    24  uart0.o(i.UART0_OutString)
-    UART0_OutUDec                            0x000049b1   Thumb Code    42  uart0.o(i.UART0_OutUDec)
-    UART0_OutUHex                            0x000049db   Thumb Code    52  uart0.o(i.UART0_OutUHex)
-    UART0_OutUHex2                           0x00004a0f   Thumb Code    20  uart0.o(i.UART0_OutUHex2)
-    UART1_FinishOutput                       0x00004a25   Thumb Code    30  uart1.o(i.UART1_FinishOutput)
-    UART1_Handler                            0x00004a49   Thumb Code    44  uart1.o(i.UART1_Handler)
-    UART1_InChar                             0x00004a79   Thumb Code    20  uart1.o(i.UART1_InChar)
-    UART1_InStatus                           0x00004a8d   Thumb Code    14  uart1.o(i.UART1_InStatus)
-    UART1_Init                               0x00004aa5   Thumb Code   180  uart1.o(i.UART1_Init)
-    UART1_OutChar                            0x00004b71   Thumb Code    20  uart1.o(i.UART1_OutChar)
-    WideTimer3A_Handler                      0x00004b89   Thumb Code    16  bsp.o(i.WideTimer3A_Handler)
-    WideTimer4A_Handler                      0x00004ba1   Thumb Code    16  bsp.o(i.WideTimer4A_Handler)
-    WideTimer5A_Handler                      0x00004bb9   Thumb Code    16  bsp.o(i.WideTimer5A_Handler)
-    drawaxes                                 0x00004ea1   Thumb Code   218  lab6.o(i.drawaxes)
-    main                                     0x000051c9   Thumb Code   210  lab6.o(i.main)
-    outnibble                                0x000052cd   Thumb Code    32  uart0.o(i.outnibble)
-    sqrt32                                   0x000053fd   Thumb Code    30  lab6.o(i.sqrt32)
-    RECVSIZE                                 0x00005a7c   Data           4  ap.o(.constdata)
-    HCI_EXT_ResetSystemCmd                   0x00005a80   Data           9  ap.o(.constdata)
-    NPI_GetStatus                            0x00005a89   Data           6  ap.o(.constdata)
-    NPI_GetVersion                           0x00005a8f   Data           6  ap.o(.constdata)
-    NPI_Register                             0x00005a95   Data           6  ap.o(.constdata)
-    NPI_SetAdvertisement1                    0x00005a9b   Data          17  ap.o(.constdata)
-    NPI_SetAdvertisementSAP                  0x00005aac   Data          37  ap.o(.constdata)
-    NPI_StartAdvertisement                   0x00005ad1   Data          20  ap.o(.constdata)
-    MAXCHARACTERISTICS                       0x00005ae8   Data           4  ap.o(.constdata)
-    NOTIFYMAXCHARACTERISTICS                 0x00005aec   Data           4  ap.o(.constdata)
-    Key                                      0x00005af0   Data           8  texas.o(.constdata)
-    Scramble                                 0x00005af8   Data          32  texas.o(.constdata)
-    DeScramble                               0x00005b18   Data          32  texas.o(.constdata)
-    Region$$Table$$Base                      0x00005ba0   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00005bc0   Number         0  anon$$obj.o(Region$$Table)
+    BuildAddCharDescriptorMsg                0x000021ad   Thumb Code   106  ap_lab6.o(i.BuildAddCharDescriptorMsg)
+    BuildAddCharValueMsg                     0x00002217   Thumb Code    64  ap_lab6.o(i.BuildAddCharValueMsg)
+    BuildAddNotifyCharDescriptorMsg          0x00002257   Thumb Code   110  ap_lab6.o(i.BuildAddNotifyCharDescriptorMsg)
+    BuildAddServiceMsg                       0x000022c5   Thumb Code    44  ap_lab6.o(i.BuildAddServiceMsg)
+    BuildGetStatusMsg                        0x000022f1   Thumb Code    30  ap_lab6.o(i.BuildGetStatusMsg)
+    BuildGetVersionMsg                       0x0000230f   Thumb Code    30  ap_lab6.o(i.BuildGetVersionMsg)
+    BuildRegisterServiceMsg                  0x0000232d   Thumb Code    30  ap_lab6.o(i.BuildRegisterServiceMsg)
+    BuildSetAdvertisementData1Msg            0x0000234b   Thumb Code    72  ap_lab6.o(i.BuildSetAdvertisementData1Msg)
+    BuildSetAdvertisementDataMsg             0x00002393   Thumb Code   160  ap_lab6.o(i.BuildSetAdvertisementDataMsg)
+    BuildSetDeviceNameMsg                    0x00002433   Thumb Code    72  ap_lab6.o(i.BuildSetDeviceNameMsg)
+    BuildStartAdvertisementMsg               0x0000247b   Thumb Code    76  ap_lab6.o(i.BuildStartAdvertisementMsg)
+    Clock_Delay1ms                           0x000024c7   Thumb Code    22  cortexm.o(i.Clock_Delay1ms)
+    GPIO_Init                                0x00002545   Thumb Code   274  gpio.o(i.GPIO_Init)
+    GetStringSize                            0x00002681   Thumb Code    18  ap_lab6.o(i.GetStringSize)
+    Lab6OutCheck                             0x00003105   Thumb Code   122  texas.o(i.Lab6OutCheck)
+    Lab6_AddCharacteristic                   0x000031a1   Thumb Code   228  ap_lab6.o(i.Lab6_AddCharacteristic)
+    Lab6_AddNotifyCharacteristic             0x000032c1   Thumb Code   268  ap_lab6.o(i.Lab6_AddNotifyCharacteristic)
+    Lab6_AddService                          0x00003411   Thumb Code    36  ap_lab6.o(i.Lab6_AddService)
+    Lab6_GetStatus                           0x0000344d   Thumb Code    58  ap_lab6.o(i.Lab6_GetStatus)
+    Lab6_GetVersion                          0x000034a1   Thumb Code    42  ap_lab6.o(i.Lab6_GetVersion)
+    Lab6_RegisterService                     0x000034e5   Thumb Code    32  ap_lab6.o(i.Lab6_RegisterService)
+    Lab6_StartAdvertisement                  0x00003521   Thumb Code   120  ap_lab6.o(i.Lab6_StartAdvertisement)
+    LogicAnalyzer                            0x00003609   Thumb Code    12  texas.o(i.LogicAnalyzer)
+    OS_AddPeriodicEventThread                0x00003641   Thumb Code    64  os.o(i.OS_AddPeriodicEventThread)
+    OS_AddThreads                            0x00003689   Thumb Code   164  os.o(i.OS_AddThreads)
+    OS_FIFO_Get                              0x00003739   Thumb Code    42  os.o(i.OS_FIFO_Get)
+    OS_FIFO_Init                             0x00003771   Thumb Code    22  os.o(i.OS_FIFO_Init)
+    OS_FIFO_Put                              0x00003795   Thumb Code    68  os.o(i.OS_FIFO_Put)
+    OS_Init                                  0x000037e9   Thumb Code    36  os.o(i.OS_Init)
+    OS_InitSemaphore                         0x00003815   Thumb Code     4  os.o(i.OS_InitSemaphore)
+    OS_Launch                                0x00003819   Thumb Code    48  os.o(i.OS_Launch)
+    OS_Signal                                0x0000384d   Thumb Code    46  os.o(i.OS_Signal)
+    OS_Sleep                                 0x00003881   Thumb Code    16  os.o(i.OS_Sleep)
+    OS_Suspend                               0x00003895   Thumb Code    18  os.o(i.OS_Suspend)
+    OS_Wait                                  0x000038ad   Thumb Code    40  os.o(i.OS_Wait)
+    OutValue                                 0x000038d9   Thumb Code    20  lab6.o(i.OutValue)
+    PeriodicTask2_Init                       0x000038ed   Thumb Code   164  texas.o(i.PeriodicTask2_Init)
+    Profile_Init                             0x000039a9   Thumb Code   418  profile.o(i.Profile_Init)
+    RxFifo_Get                               0x00003b7d   Thumb Code    44  uart1.o(i.RxFifo_Get)
+    RxFifo_Init                              0x00003bb5   Thumb Code    16  uart1.o(i.RxFifo_Init)
+    RxFifo_Put                               0x00003bd1   Thumb Code    56  uart1.o(i.RxFifo_Put)
+    Scheduler                                0x00003c8d   Thumb Code    44  os.o(i.Scheduler)
+    SetFCS                                   0x00003cbd   Thumb Code    48  ap_lab6.o(i.SetFCS)
+    SetInitialStack                          0x00003de1   Thumb Code   326  os.o(i.SetInitialStack)
+    TExaS_Grade                              0x00003f31   Thumb Code   120  texas.o(i.TExaS_Grade)
+    TExaS_Init                               0x00003fd9   Thumb Code   308  texas.o(i.TExaS_Init)
+    TExaS_Task0                              0x0000416d   Thumb Code    50  texas.o(i.TExaS_Task0)
+    TExaS_Task1                              0x000041ad   Thumb Code    50  texas.o(i.TExaS_Task1)
+    TExaS_Task2                              0x000041ed   Thumb Code    50  texas.o(i.TExaS_Task2)
+    TExaS_Task3                              0x0000422d   Thumb Code    50  texas.o(i.TExaS_Task3)
+    TExaS_Task4                              0x0000426d   Thumb Code    50  texas.o(i.TExaS_Task4)
+    TExaS_Task5                              0x000042ad   Thumb Code    50  texas.o(i.TExaS_Task5)
+    TExaS_Task6                              0x000042ed   Thumb Code    50  texas.o(i.TExaS_Task6)
+    TIMER5A_Handler                          0x0000432d   Thumb Code    16  texas.o(i.TIMER5A_Handler)
+    Task0                                    0x00004345   Thumb Code   110  lab6.o(i.Task0)
+    Task0_Init                               0x000043d1   Thumb Code    14  lab6.o(i.Task0_Init)
+    Task1                                    0x000043e5   Thumb Code    90  lab6.o(i.Task1)
+    Task1_Init                               0x00004459   Thumb Code    74  lab6.o(i.Task1_Init)
+    Task2                                    0x000044c1   Thumb Code   406  lab6.o(i.Task2)
+    Task3                                    0x00004685   Thumb Code   302  lab6.o(i.Task3)
+    Task4                                    0x000047cd   Thumb Code    90  lab6.o(i.Task4)
+    Task5                                    0x00004835   Thumb Code   304  lab6.o(i.Task5)
+    Task6                                    0x000049b5   Thumb Code    74  lab6.o(i.Task6)
+    Task7                                    0x00004a09   Thumb Code    46  lab6.o(i.Task7)
+    UART0_Init                               0x00004a41   Thumb Code   136  uart0.o(i.UART0_Init)
+    UART0_OutChar                            0x00004add   Thumb Code    20  uart0.o(i.UART0_OutChar)
+    UART0_OutString                          0x00004af5   Thumb Code    24  uart0.o(i.UART0_OutString)
+    UART0_OutUDec                            0x00004b0d   Thumb Code    42  uart0.o(i.UART0_OutUDec)
+    UART0_OutUHex                            0x00004b37   Thumb Code    52  uart0.o(i.UART0_OutUHex)
+    UART0_OutUHex2                           0x00004b6b   Thumb Code    20  uart0.o(i.UART0_OutUHex2)
+    UART1_FinishOutput                       0x00004b81   Thumb Code    30  uart1.o(i.UART1_FinishOutput)
+    UART1_Handler                            0x00004ba5   Thumb Code    44  uart1.o(i.UART1_Handler)
+    UART1_InChar                             0x00004bd5   Thumb Code    20  uart1.o(i.UART1_InChar)
+    UART1_InStatus                           0x00004be9   Thumb Code    14  uart1.o(i.UART1_InStatus)
+    UART1_Init                               0x00004c01   Thumb Code   180  uart1.o(i.UART1_Init)
+    UART1_OutChar                            0x00004ccd   Thumb Code    20  uart1.o(i.UART1_OutChar)
+    WideTimer3A_Handler                      0x00004ce5   Thumb Code    16  bsp.o(i.WideTimer3A_Handler)
+    WideTimer4A_Handler                      0x00004cfd   Thumb Code    16  bsp.o(i.WideTimer4A_Handler)
+    WideTimer5A_Handler                      0x00004d15   Thumb Code    16  bsp.o(i.WideTimer5A_Handler)
+    drawaxes                                 0x00004ffd   Thumb Code   218  lab6.o(i.drawaxes)
+    main                                     0x00005325   Thumb Code   210  lab6.o(i.main)
+    outnibble                                0x00005429   Thumb Code    32  uart0.o(i.outnibble)
+    sqrt32                                   0x00005559   Thumb Code    30  lab6.o(i.sqrt32)
+    RECVSIZE                                 0x00005bd8   Data           4  ap.o(.constdata)
+    HCI_EXT_ResetSystemCmd                   0x00005bdc   Data           9  ap.o(.constdata)
+    NPI_GetStatus                            0x00005be5   Data           6  ap.o(.constdata)
+    NPI_GetVersion                           0x00005beb   Data           6  ap.o(.constdata)
+    NPI_Register                             0x00005bf1   Data           6  ap.o(.constdata)
+    NPI_SetAdvertisement1                    0x00005bf7   Data          17  ap.o(.constdata)
+    NPI_SetAdvertisementSAP                  0x00005c08   Data          37  ap.o(.constdata)
+    NPI_StartAdvertisement                   0x00005c2d   Data          20  ap.o(.constdata)
+    MAXCHARACTERISTICS                       0x00005c44   Data           4  ap.o(.constdata)
+    NOTIFYMAXCHARACTERISTICS                 0x00005c48   Data           4  ap.o(.constdata)
+    Key                                      0x00005c4c   Data           8  texas.o(.constdata)
+    Scramble                                 0x00005c54   Data          32  texas.o(.constdata)
+    DeScramble                               0x00005c74   Data          32  texas.o(.constdata)
+    Region$$Table$$Base                      0x00005cfc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00005d1c   Number         0  anon$$obj.o(Region$$Table)
     StX                                      0x20000008   Data           4  bsp.o(.data)
     StY                                      0x2000000c   Data           4  bsp.o(.data)
     StTextColor                              0x20000010   Data           2  bsp.o(.data)
@@ -1660,9 +1666,9 @@ Memory Map of the image
 
   Image Entry point : 0x000003a1
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00005d78, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00005c50])
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00005ed4, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00005dac])
 
-    Execution Region ER_RO (Base: 0x00000000, Size: 0x00005bc0, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x00005d1c, Max: 0xffffffff, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1796,152 +1802,152 @@ Memory Map of the image
     0x00002124   0x00000024   Code   RO          774    i.Bluetooth_ReadTime  lab6.o
     0x00002148   0x0000001c   Code   RO          775    i.Bluetooth_Steps   lab6.o
     0x00002164   0x00000048   Code   RO          776    i.Bluetooth_WritePlotState  lab6.o
-    0x000021ac   0x00000002   Code   RO          633    i.BuildAddCharDescriptorMsg  ap_lab6.o
-    0x000021ae   0x00000002   Code   RO          634    i.BuildAddCharValueMsg  ap_lab6.o
-    0x000021b0   0x00000002   Code   RO          635    i.BuildAddNotifyCharDescriptorMsg  ap_lab6.o
-    0x000021b2   0x0000002c   Code   RO          636    i.BuildAddServiceMsg  ap_lab6.o
-    0x000021de   0x0000001e   Code   RO          637    i.BuildGetStatusMsg  ap_lab6.o
-    0x000021fc   0x0000001e   Code   RO          638    i.BuildGetVersionMsg  ap_lab6.o
-    0x0000221a   0x0000001e   Code   RO          639    i.BuildRegisterServiceMsg  ap_lab6.o
-    0x00002238   0x00000048   Code   RO          640    i.BuildSetAdvertisementData1Msg  ap_lab6.o
-    0x00002280   0x000000a0   Code   RO          641    i.BuildSetAdvertisementDataMsg  ap_lab6.o
-    0x00002320   0x00000048   Code   RO          642    i.BuildSetDeviceNameMsg  ap_lab6.o
-    0x00002368   0x00000002   Code   RO          643    i.BuildStartAdvertisementMsg  ap_lab6.o
-    0x0000236a   0x00000016   Code   RO         1063    i.Clock_Delay1ms    cortexm.o
-    0x00002380   0x00000068   Code   RO         1246    i.Encrypt           texas.o
-    0x000023e8   0x0000013c   Code   RO         1078    i.GPIO_Init         gpio.o
-    0x00002524   0x00000012   Code   RO          644    i.GetStringSize     ap_lab6.o
-    0x00002536   0x00000002   PAD
-    0x00002538   0x00000078   Code   RO           60    i.I2C_Recv2         bsp.o
-    0x000025b0   0x00000048   Code   RO           61    i.I2C_Send1         bsp.o
-    0x000025f8   0x000000b0   Code   RO           62    i.I2C_Send3         bsp.o
-    0x000026a8   0x00000058   Code   RO         1247    i.Lab6BuildAddCharDescriptorMsgSolution  texas.o
-    0x00002700   0x00000040   Code   RO         1248    i.Lab6BuildAddCharValueMsgSolution  texas.o
-    0x00002740   0x0000005c   Code   RO         1249    i.Lab6BuildAddNotifyCharDescriptorMsgSolution  texas.o
-    0x0000279c   0x0000002c   Code   RO         1250    i.Lab6BuildAddServiceMsgSolution  texas.o
-    0x000027c8   0x0000001e   Code   RO         1251    i.Lab6BuildGetStatusMsgSolution  texas.o
-    0x000027e6   0x0000001e   Code   RO         1252    i.Lab6BuildGetVersionMsgSolution  texas.o
-    0x00002804   0x0000001e   Code   RO         1253    i.Lab6BuildRegisterServiceMsgSolution  texas.o
-    0x00002822   0x00000048   Code   RO         1254    i.Lab6BuildSetAdvertisementData1MsgSolution  texas.o
-    0x0000286a   0x0000007e   Code   RO         1255    i.Lab6BuildSetAdvertisementDataMsgSolution  texas.o
-    0x000028e8   0x0000007e   Code   RO         1256    i.Lab6BuildSetAdvertisementDataMsgSolutionold  texas.o
-    0x00002966   0x00000044   Code   RO         1257    i.Lab6BuildSetDeviceNameMsgSolution  texas.o
-    0x000029aa   0x0000004c   Code   RO         1258    i.Lab6BuildStartAdvertisementMsgSolution  texas.o
-    0x000029f6   0x00000002   PAD
-    0x000029f8   0x00000088   Code   RO         1259    i.Lab6GradeAddCharDescriptorMsg  texas.o
-    0x00002a80   0x0000008c   Code   RO         1260    i.Lab6GradeAddCharValueMsg  texas.o
-    0x00002b0c   0x0000008c   Code   RO         1261    i.Lab6GradeAddNotifyCharDescriptorMsg  texas.o
-    0x00002b98   0x00000090   Code   RO         1262    i.Lab6GradeAddServiceMsg  texas.o
-    0x00002c28   0x00000050   Code   RO         1263    i.Lab6GradeGetStatusMsg  texas.o
-    0x00002c78   0x00000050   Code   RO         1264    i.Lab6GradeGetVersionMsg  texas.o
-    0x00002cc8   0x00000054   Code   RO         1265    i.Lab6GradeRegisterServiceMsg  texas.o
-    0x00002d1c   0x0000005c   Code   RO         1266    i.Lab6GradeSetAdvertisementData1Msg  texas.o
-    0x00002d78   0x00000094   Code   RO         1267    i.Lab6GradeSetAdvertisementDataMsg  texas.o
-    0x00002e0c   0x000000a0   Code   RO         1268    i.Lab6GradeSetAdvertisementDataMsgold  texas.o
-    0x00002eac   0x0000008c   Code   RO         1269    i.Lab6GradeSetDeviceNameMsg  texas.o
-    0x00002f38   0x00000070   Code   RO         1270    i.Lab6GradeStartAdvertisementMsg  texas.o
-    0x00002fa8   0x0000009c   Code   RO         1271    i.Lab6OutCheck      texas.o
-    0x00003044   0x00000120   Code   RO          645    i.Lab6_AddCharacteristic  ap_lab6.o
-    0x00003164   0x00000150   Code   RO          646    i.Lab6_AddNotifyCharacteristic  ap_lab6.o
-    0x000032b4   0x0000003c   Code   RO          647    i.Lab6_AddService   ap_lab6.o
-    0x000032f0   0x00000054   Code   RO          648    i.Lab6_GetStatus    ap_lab6.o
-    0x00003344   0x00000044   Code   RO          649    i.Lab6_GetVersion   ap_lab6.o
-    0x00003388   0x0000003c   Code   RO          650    i.Lab6_RegisterService  ap_lab6.o
-    0x000033c4   0x000000e8   Code   RO          651    i.Lab6_StartAdvertisement  ap_lab6.o
-    0x000034ac   0x00000014   Code   RO         1272    i.LogicAnalyzer     texas.o
-    0x000034c0   0x00000024   Code   RO         1273    i.NextRandom        texas.o
-    0x000034e4   0x00000048   Code   RO          502    i.OS_AddPeriodicEventThread  os.o
-    0x0000352c   0x000000b0   Code   RO          503    i.OS_AddThreads     os.o
-    0x000035dc   0x00000038   Code   RO          504    i.OS_FIFO_Get       os.o
-    0x00003614   0x00000024   Code   RO          505    i.OS_FIFO_Init      os.o
-    0x00003638   0x00000054   Code   RO          506    i.OS_FIFO_Put       os.o
-    0x0000368c   0x0000002c   Code   RO          507    i.OS_Init           os.o
-    0x000036b8   0x00000004   Code   RO          508    i.OS_InitSemaphore  os.o
-    0x000036bc   0x00000034   Code   RO          509    i.OS_Launch         os.o
-    0x000036f0   0x00000034   Code   RO          510    i.OS_Signal         os.o
-    0x00003724   0x00000014   Code   RO          511    i.OS_Sleep          os.o
-    0x00003738   0x00000018   Code   RO          512    i.OS_Suspend        os.o
-    0x00003750   0x0000002c   Code   RO          513    i.OS_Wait           os.o
-    0x0000377c   0x00000014   Code   RO          777    i.OutValue          lab6.o
-    0x00003790   0x000000bc   Code   RO         1274    i.PeriodicTask2_Init  texas.o
-    0x0000384c   0x000001d4   Code   RO          616    i.Profile_Init      profile.o
-    0x00003a20   0x00000038   Code   RO         1168    i.RxFifo_Get        uart1.o
-    0x00003a58   0x0000001c   Code   RO         1169    i.RxFifo_Init       uart1.o
-    0x00003a74   0x00000048   Code   RO         1170    i.RxFifo_Put        uart1.o
-    0x00003abc   0x00000074   Code   RO           63    i.ST7735_InitR      bsp.o
-    0x00003b30   0x00000030   Code   RO          514    i.Scheduler         os.o
-    0x00003b60   0x00000030   Code   RO          652    i.SetFCS            ap_lab6.o
-    0x00003b90   0x00000026   Code   RO         1276    i.SetFCSSolution    texas.o
-    0x00003bb6   0x00000002   PAD
-    0x00003bb8   0x000000cc   Code   RO         1277    i.SetGrade          texas.o
-    0x00003c84   0x00000150   Code   RO          515    i.SetInitialStack   os.o
-    0x00003dd4   0x000000a8   Code   RO         1278    i.TExaS_Grade       texas.o
-    0x00003e7c   0x00000194   Code   RO         1279    i.TExaS_Init        texas.o
-    0x00004010   0x00000040   Code   RO         1281    i.TExaS_Task0       texas.o
-    0x00004050   0x00000040   Code   RO         1282    i.TExaS_Task1       texas.o
-    0x00004090   0x00000040   Code   RO         1283    i.TExaS_Task2       texas.o
-    0x000040d0   0x00000040   Code   RO         1284    i.TExaS_Task3       texas.o
-    0x00004110   0x00000040   Code   RO         1285    i.TExaS_Task4       texas.o
-    0x00004150   0x00000040   Code   RO         1286    i.TExaS_Task5       texas.o
-    0x00004190   0x00000040   Code   RO         1287    i.TExaS_Task6       texas.o
-    0x000041d0   0x00000018   Code   RO         1288    i.TIMER5A_Handler   texas.o
-    0x000041e8   0x0000008c   Code   RO          778    i.Task0             lab6.o
-    0x00004274   0x00000014   Code   RO          779    i.Task0_Init        lab6.o
-    0x00004288   0x00000074   Code   RO          780    i.Task1             lab6.o
-    0x000042fc   0x00000068   Code   RO          781    i.Task1_Init        lab6.o
-    0x00004364   0x000001c4   Code   RO          782    i.Task2             lab6.o
-    0x00004528   0x00000148   Code   RO          783    i.Task3             lab6.o
-    0x00004670   0x00000068   Code   RO          784    i.Task4             lab6.o
-    0x000046d8   0x00000180   Code   RO          785    i.Task5             lab6.o
-    0x00004858   0x00000054   Code   RO          786    i.Task6             lab6.o
-    0x000048ac   0x00000038   Code   RO          787    i.Task7             lab6.o
-    0x000048e4   0x0000009c   Code   RO         1097    i.UART0_Init        uart0.o
-    0x00004980   0x00000018   Code   RO         1098    i.UART0_OutChar     uart0.o
-    0x00004998   0x00000018   Code   RO         1099    i.UART0_OutString   uart0.o
-    0x000049b0   0x0000002a   Code   RO         1100    i.UART0_OutUDec     uart0.o
-    0x000049da   0x00000034   Code   RO         1101    i.UART0_OutUHex     uart0.o
-    0x00004a0e   0x00000014   Code   RO         1102    i.UART0_OutUHex2    uart0.o
-    0x00004a22   0x00000002   PAD
-    0x00004a24   0x00000024   Code   RO         1171    i.UART1_FinishOutput  uart1.o
-    0x00004a48   0x00000030   Code   RO         1172    i.UART1_Handler     uart1.o
-    0x00004a78   0x00000014   Code   RO         1173    i.UART1_InChar      uart1.o
-    0x00004a8c   0x00000018   Code   RO         1174    i.UART1_InStatus    uart1.o
-    0x00004aa4   0x000000cc   Code   RO         1175    i.UART1_Init        uart1.o
-    0x00004b70   0x00000018   Code   RO         1176    i.UART1_OutChar     uart1.o
-    0x00004b88   0x00000018   Code   RO           64    i.WideTimer3A_Handler  bsp.o
-    0x00004ba0   0x00000018   Code   RO           65    i.WideTimer4A_Handler  bsp.o
-    0x00004bb8   0x00000018   Code   RO           66    i.WideTimer5A_Handler  bsp.o
-    0x00004bd0   0x0000004c   Code   RO           67    i.adcinit           bsp.o
-    0x00004c1c   0x00000056   Code   RO           68    i.commandList       bsp.o
-    0x00004c72   0x00000002   PAD
-    0x00004c74   0x00000204   Code   RO           69    i.commonInit        bsp.o
-    0x00004e78   0x00000028   Code   RO         1178    i.copyHardwareToSoftware  uart1.o
-    0x00004ea0   0x00000114   Code   RO          788    i.drawaxes          lab6.o
-    0x00004fb4   0x00000048   Code   RO           70    i.fillmessage       bsp.o
-    0x00004ffc   0x00000060   Code   RO           71    i.fillmessage2_1    bsp.o
-    0x0000505c   0x00000064   Code   RO           73    i.fillmessage4      bsp.o
-    0x000050c0   0x00000094   Code   RO           75    i.i2cinit           bsp.o
-    0x00005154   0x00000050   Code   RO           76    i.lightsensorend    bsp.o
-    0x000051a4   0x00000024   Code   RO           77    i.lightsensorstart  bsp.o
-    0x000051c8   0x00000104   Code   RO          789    i.main              lab6.o
-    0x000052cc   0x00000020   Code   RO         1103    i.outnibble         uart0.o
-    0x000052ec   0x00000012   Code   RO           78    i.pushColor         bsp.o
-    0x000052fe   0x00000002   PAD
-    0x00005300   0x0000005c   Code   RO          516    i.runperiodicevents  os.o
-    0x0000535c   0x0000002c   Code   RO          517    i.runsleep          os.o
-    0x00005388   0x00000074   Code   RO           79    i.setAddrWindow     bsp.o
-    0x000053fc   0x0000001e   Code   RO          790    i.sqrt32            lab6.o
-    0x0000541a   0x00000044   Code   RO           80    i.tempsensorend     bsp.o
-    0x0000545e   0x00000012   Code   RO           81    i.tempsensorstart   bsp.o
-    0x00005470   0x00000048   Code   RO           82    i.writecommand      bsp.o
-    0x000054b8   0x00000048   Code   RO           83    i.writedata         bsp.o
-    0x00005500   0x0000057b   Data   RO           85    .constdata          bsp.o
-    0x00005a7b   0x00000001   PAD
-    0x00005a7c   0x00000074   Data   RO          942    .constdata          ap.o
-    0x00005af0   0x00000048   Data   RO         1290    .constdata          texas.o
-    0x00005b38   0x00000066   Data   RO         1291    .conststring        texas.o
-    0x00005b9e   0x00000002   PAD
-    0x00005ba0   0x00000020   Data   RO         1727    Region$$Table       anon$$obj.o
+    0x000021ac   0x0000006a   Code   RO          633    i.BuildAddCharDescriptorMsg  ap_lab6.o
+    0x00002216   0x00000040   Code   RO          634    i.BuildAddCharValueMsg  ap_lab6.o
+    0x00002256   0x0000006e   Code   RO          635    i.BuildAddNotifyCharDescriptorMsg  ap_lab6.o
+    0x000022c4   0x0000002c   Code   RO          636    i.BuildAddServiceMsg  ap_lab6.o
+    0x000022f0   0x0000001e   Code   RO          637    i.BuildGetStatusMsg  ap_lab6.o
+    0x0000230e   0x0000001e   Code   RO          638    i.BuildGetVersionMsg  ap_lab6.o
+    0x0000232c   0x0000001e   Code   RO          639    i.BuildRegisterServiceMsg  ap_lab6.o
+    0x0000234a   0x00000048   Code   RO          640    i.BuildSetAdvertisementData1Msg  ap_lab6.o
+    0x00002392   0x000000a0   Code   RO          641    i.BuildSetAdvertisementDataMsg  ap_lab6.o
+    0x00002432   0x00000048   Code   RO          642    i.BuildSetDeviceNameMsg  ap_lab6.o
+    0x0000247a   0x0000004c   Code   RO          643    i.BuildStartAdvertisementMsg  ap_lab6.o
+    0x000024c6   0x00000016   Code   RO         1063    i.Clock_Delay1ms    cortexm.o
+    0x000024dc   0x00000068   Code   RO         1246    i.Encrypt           texas.o
+    0x00002544   0x0000013c   Code   RO         1078    i.GPIO_Init         gpio.o
+    0x00002680   0x00000012   Code   RO          644    i.GetStringSize     ap_lab6.o
+    0x00002692   0x00000002   PAD
+    0x00002694   0x00000078   Code   RO           60    i.I2C_Recv2         bsp.o
+    0x0000270c   0x00000048   Code   RO           61    i.I2C_Send1         bsp.o
+    0x00002754   0x000000b0   Code   RO           62    i.I2C_Send3         bsp.o
+    0x00002804   0x00000058   Code   RO         1247    i.Lab6BuildAddCharDescriptorMsgSolution  texas.o
+    0x0000285c   0x00000040   Code   RO         1248    i.Lab6BuildAddCharValueMsgSolution  texas.o
+    0x0000289c   0x0000005c   Code   RO         1249    i.Lab6BuildAddNotifyCharDescriptorMsgSolution  texas.o
+    0x000028f8   0x0000002c   Code   RO         1250    i.Lab6BuildAddServiceMsgSolution  texas.o
+    0x00002924   0x0000001e   Code   RO         1251    i.Lab6BuildGetStatusMsgSolution  texas.o
+    0x00002942   0x0000001e   Code   RO         1252    i.Lab6BuildGetVersionMsgSolution  texas.o
+    0x00002960   0x0000001e   Code   RO         1253    i.Lab6BuildRegisterServiceMsgSolution  texas.o
+    0x0000297e   0x00000048   Code   RO         1254    i.Lab6BuildSetAdvertisementData1MsgSolution  texas.o
+    0x000029c6   0x0000007e   Code   RO         1255    i.Lab6BuildSetAdvertisementDataMsgSolution  texas.o
+    0x00002a44   0x0000007e   Code   RO         1256    i.Lab6BuildSetAdvertisementDataMsgSolutionold  texas.o
+    0x00002ac2   0x00000044   Code   RO         1257    i.Lab6BuildSetDeviceNameMsgSolution  texas.o
+    0x00002b06   0x0000004c   Code   RO         1258    i.Lab6BuildStartAdvertisementMsgSolution  texas.o
+    0x00002b52   0x00000002   PAD
+    0x00002b54   0x00000088   Code   RO         1259    i.Lab6GradeAddCharDescriptorMsg  texas.o
+    0x00002bdc   0x0000008c   Code   RO         1260    i.Lab6GradeAddCharValueMsg  texas.o
+    0x00002c68   0x0000008c   Code   RO         1261    i.Lab6GradeAddNotifyCharDescriptorMsg  texas.o
+    0x00002cf4   0x00000090   Code   RO         1262    i.Lab6GradeAddServiceMsg  texas.o
+    0x00002d84   0x00000050   Code   RO         1263    i.Lab6GradeGetStatusMsg  texas.o
+    0x00002dd4   0x00000050   Code   RO         1264    i.Lab6GradeGetVersionMsg  texas.o
+    0x00002e24   0x00000054   Code   RO         1265    i.Lab6GradeRegisterServiceMsg  texas.o
+    0x00002e78   0x0000005c   Code   RO         1266    i.Lab6GradeSetAdvertisementData1Msg  texas.o
+    0x00002ed4   0x00000094   Code   RO         1267    i.Lab6GradeSetAdvertisementDataMsg  texas.o
+    0x00002f68   0x000000a0   Code   RO         1268    i.Lab6GradeSetAdvertisementDataMsgold  texas.o
+    0x00003008   0x0000008c   Code   RO         1269    i.Lab6GradeSetDeviceNameMsg  texas.o
+    0x00003094   0x00000070   Code   RO         1270    i.Lab6GradeStartAdvertisementMsg  texas.o
+    0x00003104   0x0000009c   Code   RO         1271    i.Lab6OutCheck      texas.o
+    0x000031a0   0x00000120   Code   RO          645    i.Lab6_AddCharacteristic  ap_lab6.o
+    0x000032c0   0x00000150   Code   RO          646    i.Lab6_AddNotifyCharacteristic  ap_lab6.o
+    0x00003410   0x0000003c   Code   RO          647    i.Lab6_AddService   ap_lab6.o
+    0x0000344c   0x00000054   Code   RO          648    i.Lab6_GetStatus    ap_lab6.o
+    0x000034a0   0x00000044   Code   RO          649    i.Lab6_GetVersion   ap_lab6.o
+    0x000034e4   0x0000003c   Code   RO          650    i.Lab6_RegisterService  ap_lab6.o
+    0x00003520   0x000000e8   Code   RO          651    i.Lab6_StartAdvertisement  ap_lab6.o
+    0x00003608   0x00000014   Code   RO         1272    i.LogicAnalyzer     texas.o
+    0x0000361c   0x00000024   Code   RO         1273    i.NextRandom        texas.o
+    0x00003640   0x00000048   Code   RO          502    i.OS_AddPeriodicEventThread  os.o
+    0x00003688   0x000000b0   Code   RO          503    i.OS_AddThreads     os.o
+    0x00003738   0x00000038   Code   RO          504    i.OS_FIFO_Get       os.o
+    0x00003770   0x00000024   Code   RO          505    i.OS_FIFO_Init      os.o
+    0x00003794   0x00000054   Code   RO          506    i.OS_FIFO_Put       os.o
+    0x000037e8   0x0000002c   Code   RO          507    i.OS_Init           os.o
+    0x00003814   0x00000004   Code   RO          508    i.OS_InitSemaphore  os.o
+    0x00003818   0x00000034   Code   RO          509    i.OS_Launch         os.o
+    0x0000384c   0x00000034   Code   RO          510    i.OS_Signal         os.o
+    0x00003880   0x00000014   Code   RO          511    i.OS_Sleep          os.o
+    0x00003894   0x00000018   Code   RO          512    i.OS_Suspend        os.o
+    0x000038ac   0x0000002c   Code   RO          513    i.OS_Wait           os.o
+    0x000038d8   0x00000014   Code   RO          777    i.OutValue          lab6.o
+    0x000038ec   0x000000bc   Code   RO         1274    i.PeriodicTask2_Init  texas.o
+    0x000039a8   0x000001d4   Code   RO          616    i.Profile_Init      profile.o
+    0x00003b7c   0x00000038   Code   RO         1168    i.RxFifo_Get        uart1.o
+    0x00003bb4   0x0000001c   Code   RO         1169    i.RxFifo_Init       uart1.o
+    0x00003bd0   0x00000048   Code   RO         1170    i.RxFifo_Put        uart1.o
+    0x00003c18   0x00000074   Code   RO           63    i.ST7735_InitR      bsp.o
+    0x00003c8c   0x00000030   Code   RO          514    i.Scheduler         os.o
+    0x00003cbc   0x00000030   Code   RO          652    i.SetFCS            ap_lab6.o
+    0x00003cec   0x00000026   Code   RO         1276    i.SetFCSSolution    texas.o
+    0x00003d12   0x00000002   PAD
+    0x00003d14   0x000000cc   Code   RO         1277    i.SetGrade          texas.o
+    0x00003de0   0x00000150   Code   RO          515    i.SetInitialStack   os.o
+    0x00003f30   0x000000a8   Code   RO         1278    i.TExaS_Grade       texas.o
+    0x00003fd8   0x00000194   Code   RO         1279    i.TExaS_Init        texas.o
+    0x0000416c   0x00000040   Code   RO         1281    i.TExaS_Task0       texas.o
+    0x000041ac   0x00000040   Code   RO         1282    i.TExaS_Task1       texas.o
+    0x000041ec   0x00000040   Code   RO         1283    i.TExaS_Task2       texas.o
+    0x0000422c   0x00000040   Code   RO         1284    i.TExaS_Task3       texas.o
+    0x0000426c   0x00000040   Code   RO         1285    i.TExaS_Task4       texas.o
+    0x000042ac   0x00000040   Code   RO         1286    i.TExaS_Task5       texas.o
+    0x000042ec   0x00000040   Code   RO         1287    i.TExaS_Task6       texas.o
+    0x0000432c   0x00000018   Code   RO         1288    i.TIMER5A_Handler   texas.o
+    0x00004344   0x0000008c   Code   RO          778    i.Task0             lab6.o
+    0x000043d0   0x00000014   Code   RO          779    i.Task0_Init        lab6.o
+    0x000043e4   0x00000074   Code   RO          780    i.Task1             lab6.o
+    0x00004458   0x00000068   Code   RO          781    i.Task1_Init        lab6.o
+    0x000044c0   0x000001c4   Code   RO          782    i.Task2             lab6.o
+    0x00004684   0x00000148   Code   RO          783    i.Task3             lab6.o
+    0x000047cc   0x00000068   Code   RO          784    i.Task4             lab6.o
+    0x00004834   0x00000180   Code   RO          785    i.Task5             lab6.o
+    0x000049b4   0x00000054   Code   RO          786    i.Task6             lab6.o
+    0x00004a08   0x00000038   Code   RO          787    i.Task7             lab6.o
+    0x00004a40   0x0000009c   Code   RO         1097    i.UART0_Init        uart0.o
+    0x00004adc   0x00000018   Code   RO         1098    i.UART0_OutChar     uart0.o
+    0x00004af4   0x00000018   Code   RO         1099    i.UART0_OutString   uart0.o
+    0x00004b0c   0x0000002a   Code   RO         1100    i.UART0_OutUDec     uart0.o
+    0x00004b36   0x00000034   Code   RO         1101    i.UART0_OutUHex     uart0.o
+    0x00004b6a   0x00000014   Code   RO         1102    i.UART0_OutUHex2    uart0.o
+    0x00004b7e   0x00000002   PAD
+    0x00004b80   0x00000024   Code   RO         1171    i.UART1_FinishOutput  uart1.o
+    0x00004ba4   0x00000030   Code   RO         1172    i.UART1_Handler     uart1.o
+    0x00004bd4   0x00000014   Code   RO         1173    i.UART1_InChar      uart1.o
+    0x00004be8   0x00000018   Code   RO         1174    i.UART1_InStatus    uart1.o
+    0x00004c00   0x000000cc   Code   RO         1175    i.UART1_Init        uart1.o
+    0x00004ccc   0x00000018   Code   RO         1176    i.UART1_OutChar     uart1.o
+    0x00004ce4   0x00000018   Code   RO           64    i.WideTimer3A_Handler  bsp.o
+    0x00004cfc   0x00000018   Code   RO           65    i.WideTimer4A_Handler  bsp.o
+    0x00004d14   0x00000018   Code   RO           66    i.WideTimer5A_Handler  bsp.o
+    0x00004d2c   0x0000004c   Code   RO           67    i.adcinit           bsp.o
+    0x00004d78   0x00000056   Code   RO           68    i.commandList       bsp.o
+    0x00004dce   0x00000002   PAD
+    0x00004dd0   0x00000204   Code   RO           69    i.commonInit        bsp.o
+    0x00004fd4   0x00000028   Code   RO         1178    i.copyHardwareToSoftware  uart1.o
+    0x00004ffc   0x00000114   Code   RO          788    i.drawaxes          lab6.o
+    0x00005110   0x00000048   Code   RO           70    i.fillmessage       bsp.o
+    0x00005158   0x00000060   Code   RO           71    i.fillmessage2_1    bsp.o
+    0x000051b8   0x00000064   Code   RO           73    i.fillmessage4      bsp.o
+    0x0000521c   0x00000094   Code   RO           75    i.i2cinit           bsp.o
+    0x000052b0   0x00000050   Code   RO           76    i.lightsensorend    bsp.o
+    0x00005300   0x00000024   Code   RO           77    i.lightsensorstart  bsp.o
+    0x00005324   0x00000104   Code   RO          789    i.main              lab6.o
+    0x00005428   0x00000020   Code   RO         1103    i.outnibble         uart0.o
+    0x00005448   0x00000012   Code   RO           78    i.pushColor         bsp.o
+    0x0000545a   0x00000002   PAD
+    0x0000545c   0x0000005c   Code   RO          516    i.runperiodicevents  os.o
+    0x000054b8   0x0000002c   Code   RO          517    i.runsleep          os.o
+    0x000054e4   0x00000074   Code   RO           79    i.setAddrWindow     bsp.o
+    0x00005558   0x0000001e   Code   RO          790    i.sqrt32            lab6.o
+    0x00005576   0x00000044   Code   RO           80    i.tempsensorend     bsp.o
+    0x000055ba   0x00000012   Code   RO           81    i.tempsensorstart   bsp.o
+    0x000055cc   0x00000048   Code   RO           82    i.writecommand      bsp.o
+    0x00005614   0x00000048   Code   RO           83    i.writedata         bsp.o
+    0x0000565c   0x0000057b   Data   RO           85    .constdata          bsp.o
+    0x00005bd7   0x00000001   PAD
+    0x00005bd8   0x00000074   Data   RO          942    .constdata          ap.o
+    0x00005c4c   0x00000048   Data   RO         1290    .constdata          texas.o
+    0x00005c94   0x00000066   Data   RO         1291    .conststring        texas.o
+    0x00005cfa   0x00000002   PAD
+    0x00005cfc   0x00000020   Data   RO         1727    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Base: 0x20000000, Size: 0x000001b8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000090])
@@ -1980,7 +1986,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
       1812        212        116        200        368      11321   ap.o
-      1640        344          0          0          0      13137   ap_lab6.o
+      1988        344          0          0          0      13741   ap_lab6.o
       6858        754       1403         68         12      42854   bsp.o
         28          0          0          0          0        817   cortexm.o
        316         42          0          0          0        476   gpio.o
@@ -1994,7 +2000,7 @@ Image component sizes
        552         92          0         12        256       5884   uart1.o
 
     ----------------------------------------------------------------------
-     20796       3338       2348        440       7512     131693   Object Totals
+     21144       3338       2348        440       7512     132297   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         26          0          3          2          0          0   (incl. Padding)
 
@@ -2043,15 +2049,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     21140       3354       2348        440       7608     122081   Grand Totals
-     21140       3354       2348        144       7608     122081   ELF Image Totals (compressed)
-     21140       3354       2348        144          0          0   ROM Totals
+     21488       3354       2348        440       7608     122685   Grand Totals
+     21488       3354       2348        144       7608     122685   ELF Image Totals (compressed)
+     21488       3354       2348        144          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                23488 (  22.94kB)
+    Total RO  Size (Code + RO Data)                23836 (  23.28kB)
     Total RW  Size (RW Data + ZI Data)              8048 (   7.86kB)
-    Total ROM Size (Code + RO Data + RW Data)      23632 (  23.08kB)
+    Total ROM Size (Code + RO Data + RW Data)      23980 (  23.42kB)
 
 ==============================================================================
 

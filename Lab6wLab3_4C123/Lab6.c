@@ -526,6 +526,7 @@ void Bluetooth_Init(void){volatile int r;
   Lab6_GetStatus();  // optional
   Lab6_GetVersion(); // optional
   Lab6_AddService(0xFFF0); 
+//Lab6_AddCharacteristic(uuid, thesize, *pt, permission, properties, name[], (*ReadFunc), (*WriteFunc)){
   Lab6_AddCharacteristic(0xFFF1,1,&PlotState,0x03,0x0A,"PlotState",&Bluetooth_ReadPlotState,&Bluetooth_WritePlotState);
   Lab6_AddCharacteristic(0xFFF2,4,&Time,0x01,0x02,"Time",&Bluetooth_ReadTime,0);
   Lab6_AddCharacteristic(0xFFF3,4,&SoundRMS,0x01,0x02,"Sound",&Bluetooth_ReadSound,0);
